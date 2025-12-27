@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Manifesto Portugal 2025 - 2035</title>
+    
+<style>
+body {
+    font-family: Arial, sans-serif;
+    padding: 1rem;
+    background-color: #fff;
+    color: #000;
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 2rem;
+    text-decoration: none;
+    color: #003366; /* azul escuro */
+    z-index: 1000;
+    background: none;
+    border: none;
+}
+
+@media (max-width: 768px) {
+    .close-button {
+        font-size: 2.5rem;
+    }
+}
+</style>
+
+</head>
+<body>
+
+    <a href="index.html" class="close-button" title="Voltar">✕</a>
+    <h1>Manifesto Portugal 2025 - 2035</h1>
+    <div class="meta">
+        <p><strong>📅 2025-09-13</strong></p>
+        <p><a href="https://fasgoncalves.github.io/fragmentoscaos-html/2025/09/11389.html" target="_blank">🔗 Ver artigo original</a></p>
+    </div>
+
+<p><img src="https://fasgoncalves.github.io/indice.fragmentoscaos/images/manifesto-portugal-2025-2035.png" alt="Miniatura do artigo" /></p>
+
+<!-- MANIFESTO PORTUGAL 2035 · BLOCO ISOLADO -->
+
+<style>
+  .manifesto-2035-pro{
+    --bg:#000000; --fg:#f5f7ff; --fg-dim:#d8dcee;
+    --accent:#FFB400;          /* amarelo torrado (títulos/assinaturas) */
+    --accent2:#3CB371;         /* verde elegante (destaques) */
+    --link:#7dd3fc;            /* cyan claro para links */
+    --card:rgba(255,255,255,.05);
+    --card-b:rgba(255,255,255,.14);
+    color:var(--fg); background:var(--bg);
+    font-family:"Segoe UI",system-ui,-apple-system,Arial,sans-serif;
+    line-height:1.8; max-width:1080px; margin:0 auto;
+    padding:clamp(16px,3.6vw,40px); border-radius:16px;
+    box-shadow:0 10px 30px rgba(0,0,0,.6); position:relative; isolation:isolate;
+  }
+  .manifesto-2035-pro::before{
+    content:""; position:absolute; inset:-20%;
+    background:radial-gradient(60% 40% at 20% 0%, rgba(255,180,0,.10), transparent 60%),
+               radial-gradient(50% 35% at 85% 10%, rgba(60,179,113,.12), transparent 60%);
+    filter:blur(42px); z-index:-1;
+  }
+
+  /* Tipografia e títulos */
+  .manifesto-2035-pro h1,
+  .manifesto-2035-pro h2,
+  .manifesto-2035-pro h3{
+    letter-spacing:.2px; text-wrap:balance; margin:.2rem 0 .7rem;
+  }
+  .manifesto-2035-pro h1{
+    color:#FFB400 !important; /* amarelo torrado */
+    font-weight:900;
+    font-size:clamp(2rem,6.2vw,3rem);
+    line-height:1.12;
+    text-align:center;
+    text-shadow:0 0 14px rgba(255,180,0,.25);
+  }
+  .manifesto-2035-pro h2{
+    color:var(--accent);
+    font-weight:800;
+    font-size:clamp(1.25rem,4.6vw,1.6rem);
+    line-height:1.22; position:relative;
+  }
+  .manifesto-2035-pro h2::after{
+    content:""; display:block; height:3px; margin-top:.45rem; border-radius:2px;
+    background:linear-gradient(90deg,var(--accent),transparent 70%);
+  }
+  .manifesto-2035-pro h3{
+    color:var(--accent);
+    font-weight:800;
+    font-size:clamp(1.1rem,3.8vw,1.25rem);
+  }
+  .manifesto-2035-pro p,.manifesto-2035-pro li{
+    font-size:clamp(1rem,2.9vw,1.08rem); color:var(--fg);
+  }
+  .manifesto-2035-pro .lead{ color:var(--fg-dim); text-align:center; margin:0 0 1rem; }
+
+  /* Cartões de secção */
+  .manifesto-2035-pro .section{
+    background:var(--card); border:1px solid var(--card-b);
+    border-radius:14px; padding:clamp(14px,3.2vw,22px); margin:clamp(12px,2vw,18px) 0;
+    backdrop-filter:blur(4px);
+  }
+  .manifesto-2035-pro .kpi{ display:flex; gap:10px; align-items:flex-start; margin:.5rem 0; }
+  .manifesto-2035-pro .kpi .icon{ font-size:1.2rem; color:var(--accent2); margin-top:2px; }
+  .manifesto-2035-pro strong{ color:#fff; font-weight:800; }
+  .manifesto-2035-pro em{ opacity:.95; }
+  .manifesto-2035-pro .d{ color:var(--accent2); font-weight:700; }
+
+  /* Links e botões */
+  .manifesto-2035-pro a{ color:var(--link); text-decoration:none; }
+  .manifesto-2035-pro a:hover{ text-decoration:underline; }
+  .manifesto-2035-pro .btn{
+    display:inline-block; margin-top:.9rem; padding:.9rem 1.2rem;
+    background:var(--accent); color:#000; font-weight:800; border-radius:10px;
+    box-shadow:0 6px 18px rgba(255,255,255,.08), inset 0 -2px 0 rgba(0,0,0,.25);
+    text-decoration:none; text-align:center;
+  }
+
+  /* Bloco final e assinatura */
+  .manifesto-2035-pro .final{
+    border-left:6px solid var(--accent);
+    background:linear-gradient(90deg, rgba(255,180,0,.08), transparent 70%);
+    padding:clamp(14px,3vw,20px); border-radius:12px; margin-top:clamp(16px,3vw,24px);
+  }
+  .manifesto-2035-pro .assinatura{ text-align:center; margin-top:clamp(16px,3vw,26px); font-size:clamp(1rem,3vw,1.1rem); }
+  .manifesto-2035-pro .autor{ color:var(--accent); font-weight:700; text-shadow:0 0 10px rgba(255,180,0,.2); }
+
+  /* Responsivo */
+  @media (max-width: 860px){
+    .manifesto-2035-pro{ border-radius:12px; padding:16px; }
+    .manifesto-2035-pro .btn{ width:100%; min-height:48px; }
+  }
+</style>
+
+<div class="manifesto-2035-pro" id="manifesto-2035">
+  <h1>🇵🇹 Manifesto Portugal 2035: Inovação ou Estagnação</h1>
+  <p class="lead">Medidas com prazos e KPIs para transformar o país — menos gordura, mais competência; mais ciência, mais indústria, mais futuro.</p>
+
+  <!-- I. Estado -->
+  <div class="section">
+    <h2>I. O Estado ao Serviço dos Cidadãos</h2>
+    <p><strong>Objetivo:</strong> menos Estado gorduroso, mais Estado competente.</p>
+    <div class="kpi"><span class="icon">⚙️</span><p><strong>Cortar duplicações administrativas</strong> (fusões de direções-gerais e institutos redundantes).<br>📅 <span class="d">Prazo:</span> 12 meses · 🎯 <span class="d">KPI:</span> −10% da despesa corrente nessas áreas.</p></div>
+    <div class="kpi"><span class="icon">💻</span><p><strong>Digitalização total</strong> de processos públicos (licenciamento, registos, tribunais fiscais).<br>📅 <span class="d">Prazo:</span> 18 meses · 🎯 <span class="d">KPI:</span> tempo médio de resposta ≤ 30 dias.</p></div>
+    <div class="kpi"><span class="icon">🧮</span><p><strong>Orçamento Base-Zero (ZBB)</strong> em 3 ministérios-piloto: Saúde, Educação, Economia.<br>📅 <span class="d">Prazo:</span> 2026 · 🎯 <span class="d">KPI:</span> relatório público de poupanças e reinvestimentos no 1.º ano.</p></div>
+  </div>
+
+  <!-- II. Justiça -->
+  <div class="section">
+    <h2>II. Justiça Rápida e Transparente</h2>
+    <p><strong>Objetivo:</strong> restaurar a confiança dos cidadãos.</p>
+    <div class="kpi"><span class="icon">⚖️</span><p><strong>Tribunais digitais</strong> para processos até 50 mil euros.<br>📅 <span class="d">Prazo:</span> 2026 · 🎯 <span class="d">KPI:</span> decisões em ≤ 6 meses.</p></div>
+    <div class="kpi"><span class="icon">🛡️</span><p><strong>Unidade nacional anticorrupção independente</strong> com magistrados dedicados.<br>📅 <span class="d">Prazo:</span> 12 meses · 🎯 <span class="d">KPI:</span> 100% dos processos acompanhados em plataforma pública.</p></div>
+    <div class="kpi"><span class="icon">📊</span><p><strong>KPIs trimestrais</strong> para organismos públicos (custos, prazos, auditorias).<br>📅 <span class="d">Prazo:</span> 2026 · 🎯 <span class="d">KPI:</span> relatórios abertos no portal do cidadão.</p></div>
+  </div>
+
+  <!-- III. Educação e Ciência -->
+  <div class="section">
+    <h2>III. Educação e Ciência</h2>
+    <p><strong>Objetivo:</strong> criar capital humano inovador.</p>
+    <div class="kpi"><span class="icon">🔬</span><p><strong>Laboratórios maker</strong> em todas as escolas secundárias.<br>📅 <span class="d">Prazo:</span> 2027 · 🎯 <span class="d">KPI:</span> 70% das escolas equipadas.</p></div>
+    <div class="kpi"><span class="icon">🤝</span><p><strong>Parcerias obrigatórias universidade–empresa</strong> em cursos STEM.<br>📅 <span class="d">Prazo:</span> 2026 · 🎯 <span class="d">KPI:</span> 1 projeto aplicado por aluno finalista.</p></div>
+    <div class="kpi"><span class="icon">🛡️</span><p><strong>Estabilidade legislativa educativa por 10 anos</strong> (lei-quadro).<br>📅 <span class="d">Prazo:</span> 2026 · 🎯 <span class="d">KPI:</span> lei aprovada e blindada.</p></div>
+  </div>
+
+  <!-- IV. Startups e Empresas -->
+  <div class="section">
+    <h2>IV. Startups e Empresas</h2>
+    <p><strong>Objetivo:</strong> transformar boas ideias em motores de riqueza.</p>
+    <div class="kpi"><span class="icon">🚀</span><p><strong>Fundo Startups (3 anos)</strong> com isenção fiscal parcial e microfinanciamento até 200k€.<br>📅 <span class="d">Prazo:</span> 2026 · 🎯 <span class="d">KPI:</span> 500 startups/ano; sobrevivência >60% ao 3.º ano.</p></div>
+    <div class="kpi"><span class="icon">🏭</span><p><strong>Linhas de crédito industriais verdes</strong> (energias, baterias, H₂, robótica).<br>📅 <span class="d">Prazo:</span> 2026 · 🎯 <span class="d">KPI:</span> 20 projetos de exportação em 2 anos.</p></div>
+    <div class="kpi"><span class="icon">🧑‍⚖️</span><p><strong>Concursos públicos 100% digitais</strong> com júris externos sorteados.<br>📅 <span class="d">Prazo:</span> 2026 · 🎯 <span class="d">KPI:</span> 0% “jobs for the boys” em cargos técnicos.</p></div>
+  </div>
+
+  <!-- V. Sociedade Civil -->
+  <div class="section">
+    <h2>V. Sociedade Civil Responsável</h2>
+    <p><strong>Objetivo:</strong> cidadãos protagonistas da mudança.</p>
+    <div class="kpi"><span class="icon">🗳️</span><p><strong>Orçamento participativo nacional</strong> (1% OE) para inovação/impacto social.<br>📅 <span class="d">Prazo:</span> 2027 · 🎯 <span class="d">KPI:</span> 500 projetos financiados.</p></div>
+    <div class="kpi"><span class="icon">💡</span><p><strong>Incentivos fiscais à poupança e investimento produtivo</strong> (contas inovação).<br>📅 <span class="d">Prazo:</span> 2026 · 🎯 <span class="d">KPI:</span> 1 milhão de aderentes em 3 anos.</p></div>
+  </div>
+
+  <!-- VI. Indústria e Tecnologia -->
+  <div class="section">
+    <h2>VI. Renascimento Industrial e Tecnológico</h2>
+    <p><strong>Objetivo:</strong> de subcontratados baratos a produtores de riqueza global.</p>
+    <div class="kpi"><span class="icon">🔧</span><p><strong>Programa “Portugal Industrial 4.0”</strong> com incentivos a fábricas tecnológicas exportadoras.<br>📅 <span class="d">Prazo:</span> até 2027 · 🎯 <span class="d">KPI:</span> +20% exportações high-tech.</p></div>
+    <div class="kpi"><span class="icon">🧭</span><p><strong>Fábricas tecnológicas com foco exportador</strong> e polos regionais de alta tecnologia.<br>📅 <span class="d">Prazo:</span> 2027 · 🎯 <span class="d">KPI:</span> 10 novos polos ativos.</p></div>
+  </div>
+
+  <!-- Chamamento Final -->
+  <div class="final">
+    <h2>✦ Chamamento Final ✦</h2>
+    <p>Este não é um plano apenas para governos. É um compromisso nacional. Um país limpo, justo, educado e inovador não nasce de promessas, mas de ação. <strong>Ou inovamos, ou morremos.</strong> Portugal 2035 pode ser <strong>a década da grande viragem</strong> — se tivermos coragem.</p>
+    <a href="#manifesto-2035" class="btn">Quero Inovar Portugal</a>
+  </div>
+
+  <!-- Assinatura -->
+  <div class="assinatura">
+    <p><span class="autor">Francisco Gonçalves</span> & <span class="autor">Augustus Veritas</span></p>
+  </div>
+</div>
+
+<p>[fc_footer]</p>
+
+</body>
+</html>
