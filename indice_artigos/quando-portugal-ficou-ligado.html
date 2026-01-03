@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>⚡ Quando Portugal Ficou Ligado</title>
+    
+<style>
+body {
+    font-family: Arial, sans-serif;
+    padding: 1rem;
+    background-color: #fff;
+    color: #000;
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 2rem;
+    text-decoration: none;
+    color: #003366; /* azul escuro */
+    z-index: 1000;
+    background: none;
+    border: none;
+}
+
+@media (max-width: 768px) {
+    .close-button {
+        font-size: 2.5rem;
+    }
+}
+</style>
+
+</head>
+<body>
+
+    <a href="index.html" class="close-button" title="Voltar">✕</a>
+    <h1>⚡ Quando Portugal Ficou Ligado</h1>
+    <div class="meta">
+        <p><strong>📅 2025-10-25</strong></p>
+        <p><a href="https://fasgoncalves.github.io/fragmentoscaos-html/2025/10/%e2%9a%a1-quando-portugal-ficou-ligado.html" target="_blank">🔗 Ver artigo original</a></p>
+    </div>
+
+<p><img src="https://fasgoncalves.github.io/indice.fragmentoscaos/images/quando-portugal-ficou-ligado.png" alt="Miniatura do artigo" /></p>
+
+<div style="background:#000;color:#e8eef4;font-family:'Georgia',serif;line-height:1.65;padding:26px;">
+
+  <!-- 🔶 Chamada de Capa -->
+  <div style="border-left:4px solid #ffcc66;padding-left:12px;margin-bottom:24px;">
+    <h3 style="color:#ffcc66 !important;margin:0;">Crónica Histórica — A Rede que Venceu a Entropia</h3>
+    <p style="margin:6px 0 0 0;">Em 1980, com computadores <b>ICL 1500</b>, modems e código em <b>assembler</b>, nasceu uma rede que ligou muitos bancos com as suas agências bancárias e sistemas centrais, a <b>Força Aérea Portuguesa</b>, e algumas outras organizações — fiável, resiliente e feita contra as limitações das linhas analógicas da época.</p>
+  </div>
+
+  <h2 style="color:#ffcc66 !important;text-align:center;margin-top:0;">
+    ICL 1500 (1980): A Rede Portuguesa “à Prova de Bala”
+  </h2>
+
+  <p style="text-align:center;font-size:0.92em;color:#cfd7df;margin-top:4px;">
+    Por Francisco Gonçalves
+ — Fragmentos do Caos
+  </p>
+
+  <!-- 🧠 Box de Factos -->
+  <div style="border:1px solid #ffcc66;background:#111;padding:12px 14px;margin:22px 0;">
+    <b>📜 Box de Factos</b><br>
+    Plataforma: <b>ICL 1500</b> (terminais/sistemas com cassete e versões com disco no centro)<br>
+    Ano: <b>1980</b><br>
+    Ligações: <b>Modems analógicos</b> (tipicamente 300–1200-2400 bps), com fall back, sobre linhas com ruído e quedas frequentes<br>
+    Protocolo: <b>Assembler e protocolos IBM e ICL adaptados para o efeito</b> (framing, CRC, ARQ, janelas deslizantes, timeouts, reenvios)<br>
+    Âmbito: <b>Bancos (agências pelo pais e sede), Força Aérea Portuguesa, e Bases pelo país</b> e outros clientes nacionais<br>
+    Distintivo: <b>Fiabilidade extrema</b> em infra-estrutura rudimentar — software “à prova de bala”
+  </div>
+
+  <h3 style="color:#ffcc66 !important;">A realidade das linhas: ruído, ecos, quedas</h3>
+  <p>Os computadores centrais tinham <i>hosts</i> pouco dotados para comunicações. As linhas eram analógicas, com atenuação, ecos e picos de ruído. O que falhava no cobre foi compensado em <b>engenharia de protocolo</b>: o <i>stack</i> que escrevi,  tornou o ICL 1500 num guardião paciente — “escutava cada banda e insistia em vencer a entropia”.</p>
+
+  <h3 style="color:#ffcc66 !important;">O coração do protocolo (feito à unha)</h3>
+  <ul style="margin-left:20px;">
+    <li><b>Framing robusto</b> — cabeçalho com STX, tamanho, sequência; rodapé com ETX e <b>CRC-16</b>/BCC.</li>
+    <li><b>Blocos compactos</b> — tipicamente 128–256 bytes por quadro, equilibrando latência/erro.</li>
+    <li><b>ARQ com janelas deslizantes</b> — ACK/NAK e <b>retransmissão seletiva</b> em caso de erro.</li>
+    <li><b>Controlo de fluxo</b> — XON/XOFF e RTS/CTS conforme o canal/porta.</li>
+    <li><b>Timeouts adaptativos & backoff</b> — reenvio exponencial e <i>line probing</i> após queda.</li>
+    <li><b>Persistência transacional</b> — <i>journaling</i> local, confirmações fim-a-fim, idempotência.</li>
+    <li><b>Auto-recuperação</b> — reconexão, re-negociação de velocidade, re-sincronização de sequência.</li>
+  </ul>
+
+  <h3 style="color:#ffcc66 !important;">Como fluía a mensagem (alto nível)</h3>
+  <pre style="background:#0b0b0b;color:#e8eef4;padding:12px;border:1px solid #222;overflow:auto;">
+enquanto houver_mensagens:
+    bloco = ler_buffer()
+    quadro = STX | LEN | SEQ | bloco | CRC | ETX
+    enviar(quadro)
+    aguardar(ACK, NAK, TIMEOUT)
+    se ACK: gravar_confirmação_e_avançar()
+    se NAK ou CRC_invalido: reenviar(SEQ)
+    se TIMEOUT: backoff(); tentar_reconectar_se_preciso()
+ao_final: enviar_FRAME_FIM(); fechar_sessão_com_log_integridade()
+  </pre>
+
+  <h3 style="color:#ffcc66 !important;">Do país inteiro ao sistema central</h3>
+  <p>Nas <b>agências bancárias</b>, os ICL 1500 recolhiam dados de operações; na sede, um ICL 1500 com <b>disco</b> actuava como nó central/host. O software fazia <b>store-and-forward</b>, verificava integridade, eliminava duplicados e alimentava o mainframe. Na <b>Força Aérea</b> e noutros clientes, o mesmo rigor: tráfego vital a passar em segurança por linhas imperfeitas.</p>
+
+  <h3 style="color:#ffcc66 !important;">Métrica e confiança</h3>
+  <p>Cada sessão gerava <b>logs precisos</b>: perdas, retransmissões, tempo por bloco, disponibilidade do circuito. Essa telemetria permitia <b>diagnosticar rotas</b>, escolher horários menos ruidosos e provar o SLA de uma era sem SLAs.</p>
+
+  <h3 style="color:#ffcc66 !important;">Legado</h3>
+  <p>Antes de X.25 massificar, antes de TCP/IP chegar às empresas, já tinha construído uma <b>rede fiável sobre o caos</b>. A lição permanece: quando a infra falha, o <b>protocolo certo</b> — pensado com elegância e disciplina — transforma ruído em <strong>informação confiável.</strong></p>
+
+  <hr style="border:0;border-top:1px solid #333;margin:26px 0;">
+  <p style="text-align:center;color:#aab3bd;font-style:italic;">
+    “A entropia não desiste — mas a teimosia da boa engenharia também não.”<br>
+    — F. Gonçalves
+  </p>
+</div>
+
+<p>[fc<em>footer</em>mini]</p>
+
+</body>
+</html>
