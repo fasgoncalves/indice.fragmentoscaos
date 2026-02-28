@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>🌌 VirtunoRunner: da Ideia ao Som — um executor aberto para o futuro</title>
+    
+<style>
+body {
+    font-family: Arial, sans-serif;
+    padding: 1rem;
+    background-color: #fff;
+    color: #000;
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 2rem;
+    text-decoration: none;
+    color: #003366; /* azul escuro */
+    z-index: 1000;
+    background: none;
+    border: none;
+}
+
+@media (max-width: 768px) {
+    .close-button {
+        font-size: 2.5rem;
+    }
+}
+</style>
+
+</head>
+<body>
+
+    <a href="index.html" class="close-button" title="Voltar">✕</a>
+    <h1>🌌 VirtunoRunner: da Ideia ao Som — um executor aberto para o futuro</h1>
+    <div class="meta">
+        <p><strong>📅 2025-08-29</strong></p>
+        <p><a href="https://fasgoncalves.github.io/fragmentoscaos-html/2025/08/%f0%9f%8c%8c-virtunorunner-da-ideia-ao-som-um-executor-aberto-para-o-futuro.html" target="_blank">🔗 Ver artigo original</a></p>
+    </div>
+
+<p><img src="https://fasgoncalves.github.io/indice.fragmentoscaos/images/virtunorunner-da-ideia-ao-som-um-executor-aberto-para-o-futuro.jpg" alt="Miniatura do artigo" /></p>
+
+<p><!-- wp:separator -->
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+<!-- /wp:separator --></p>
+
+<p><!-- wp:heading {"level":6} --></p>
+
+<h6 class="wp-block-heading"></h6>
+
+<p><!-- /wp:heading --></p>
+
+<p><!-- wp:paragraph --></p>
+
+<p>Num tempo em que a programação não pode viver apenas de código seco, nasceu o <strong>VirtunoRunner</strong>, um executor visual criado em <strong>Python + NiceGUI</strong> que conjuga pragmatismo técnico com a leveza da música.</p>
+
+<p><!-- /wp:paragraph --></p>
+
+<p><!-- wp:paragraph --></p>
+
+<p>O que parecia um simples utilitário para correr ficheiros tornou-se um projeto que respira <strong>usabilidade</strong>, <strong>inovação</strong> e — porque não dizê-lo — um certo lirismo digital.</p>
+
+<p><!-- /wp:paragraph --></p>
+
+<p><!-- wp:separator -->
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+<!-- /wp:separator --></p>
+
+<p><!-- wp:heading --></p>
+
+<h2 class="wp-block-heading">🎯 O que é o VirtunoRunner?</h2>
+
+<p><!-- /wp:heading --></p>
+
+<p><!-- wp:paragraph --></p>
+
+<p>O <strong>VirtunoRunner</strong> é uma aplicação web multi-utilizador, concebida para execução remota [ desktop e telemóvel ] de python e shell scripts, em tempo real e pré-visualização de ficheiros gerados. Estas funções são disponibilizadas num simples browser, em um painel centralizado para executar programas, gerir, tocar e descarregar conteúdos:</p>
+
+<p><!-- /wp:paragraph --></p>
+
+<p><!-- wp:list --></p>
+
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li><strong>MP3/WAV/OGG</strong>: tocados de imediato com <code><audio></code> nativo.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Imagens, vídeos, HTML</strong>: abertos no painel de preview.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>MIDI</strong>: a estrela do projeto — em vez de depender do browser, o VirtunoRunner <strong>renderiza</strong> os <code>.mid</code> no servidor com <strong>FluidSynth/Timidity</strong>, converte para WAV/MP3 e toca no momento.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Logs</strong>: sempre visíveis, mostrando os comandos executados, para que nada fique em caixa negra.</li>
+<!-- /wp:list-item --></ul>
+
+<p><!-- /wp:list --></p>
+
+<p><!-- wp:image {"id":10103,"sizeSlug":"full","linkDestination":"none"} --></p>
+
+<figure class="wp-block-image size-full"><img src="http://www.fragmentoscaos.eu/wp-content/uploads/2025/08/1000031993-1.png" alt="" class="wp-image-10103"/></figure>
+
+<p><!-- /wp:image --></p>
+
+<p><!-- wp:separator -->
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+<!-- /wp:separator --></p>
+
+<p><!-- wp:heading --></p>
+
+<h2 class="wp-block-heading">⚙️ Funcionalidades em destaque</h2>
+
+<p><!-- /wp:heading --></p>
+
+<p><!-- wp:list --></p>
+
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li><strong>Render & Play de MIDI</strong>: conversão automática para áudio de alta qualidade com reaproveitamento de renderizações passadas.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Painel NiceGUI</strong>: interface limpa e responsiva, acessível tanto em desktop como em Android.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Download seguro</strong>: rota <code>/download/{ficheiro}</code> com controlo de diretório e cabeçalhos adequados.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Extensibilidade</strong>: preparado para crescer com novos tipos de ficheiros, novos players e novas integrações.</li>
+<!-- /wp:list-item --></ul>
+
+<p><!-- /wp:list --></p>
+
+<p><!-- wp:separator -->
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+<!-- /wp:separator --></p>
+
+<p><!-- wp:heading --></p>
+
+<h2 class="wp-block-heading">📦 Disponibilidade Open-Source</h2>
+
+<p><!-- /wp:heading --></p>
+
+<p><!-- wp:paragraph --></p>
+
+<p>O <strong>VirtunoRunner</strong> está disponível em <strong>open-source</strong> no GitHub, como parte de uma visão maior:</p>
+
+<p><!-- /wp:paragraph --></p>
+
+<p><!-- wp:quote --></p>
+
+<blockquote class="wp-block-quote"><!-- wp:paragraph -->
+<p><em>oferecer ferramentas livres que cruzem técnica, música e experiência do utilizador.</em></p>
+<!-- /wp:paragraph --></blockquote>
+
+<p><!-- /wp:quote --></p>
+
+<p><!-- wp:paragraph --></p>
+
+<p>Repositório: <a href="https://github.com/fasgoncalves/VirtunoRunner.git">https://github.com/fasgoncalves/VirtunoRunner.git</a><br>(Licenciado sob MIT/GPL)</p>
+
+<p><!-- /wp:paragraph --></p>
+
+<p><!-- wp:image {"id":10107,"sizeSlug":"full","linkDestination":"none"} --></p>
+
+<figure class="wp-block-image size-full"><img src="http://www.fragmentoscaos.eu/wp-content/uploads/2025/08/1000031994.png" alt="" class="wp-image-10107"/></figure>
+
+<p><!-- /wp:image --></p>
+
+<p><!-- wp:separator -->
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+<!-- /wp:separator --></p>
+
+<p><!-- wp:heading --></p>
+
+<h2 class="wp-block-heading">🚀 Como correr</h2>
+
+<p><!-- /wp:heading --></p>
+
+<p><!-- wp:code --></p>
+
+<pre class="wp-block-code"><code>git clone https://github.com/fasgoncalves/VirtunoRunner.git
+cd VirtunoRunner
+pip install nicegui
+sudo apt-get install fluidsynth fluid-soundfont-gm timidity ffmpeg
+export EXECUTOR_OUTPUT_DIR="/home/utilizador/virtuno_outputs"
+export GM_SF2="/usr/share/sounds/sf2/FluidR3_GM.sf2"
+python3 VirtunoRunner.py
+</code></pre>
+
+<p><!-- /wp:code --></p>
+
+<p><!-- wp:paragraph --></p>
+
+<p>Abre no browser: <code>http://localhost:2020</code>.</p>
+
+<p><!-- /wp:paragraph --></p>
+
+<p><!-- wp:separator -->
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+<!-- /wp:separator --></p>
+
+<p><!-- wp:heading --></p>
+
+<h2 class="wp-block-heading">🌍 Um projeto com futuro</h2>
+
+<p><!-- /wp:heading --></p>
+
+<p><!-- wp:paragraph --></p>
+
+<p>O VirtunoRunner é mais que um repositório: é a prova de que <strong>software livre</strong> pode ser belo, funcional e acessível. É também um convite a todos os que acreditam que a música, a programação e a partilha têm lugar comum.</p>
+
+<p><!-- /wp:paragraph --></p>
+
+<p><!-- wp:quote --></p>
+
+<blockquote class="wp-block-quote"><!-- wp:paragraph -->
+<p>Do código às notas, do terminal ao browser — o VirtunoRunner faz o invisível soar.</p>
+<!-- /wp:paragraph --></blockquote>
+
+<p><!-- /wp:quote --></p>
+
+<p><!-- wp:separator -->
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+<!-- /wp:separator --></p>
+
+<p><!-- wp:paragraph --></p>
+
+<p>👉 Artigo da Autoria de <a href="https://fasgoncalves.github.io/fragmentoscaos-html/sobre-francisco-goncalves.html" data-type="page" data-id="328"><strong><em>Francisco Gonçalves</em></strong></a> in Fragmentos de Caos</p>
+
+<p><!-- /wp:paragraph --></p>
+
+<p><!-- wp:paragraph --></p>
+
+<p>Mais sobre esta solução <a href="https://fasgoncalves.github.io/fragmentoscaos-html/%f0%9f%93%98-readme-projeto-virtunorunner.html"><strong><em>aqui</em></strong></a>.</p>
+
+<p><!-- /wp:paragraph --></p>
+
+<p><!-- wp:paragraph --></p>
+
+<p>Mais informações técnicas em <a href="mailto:infos@softelabs.pt"><strong><em>infos@softelabs.pt</em></strong></a></p>
+
+<p><!-- /wp:paragraph --></p>
+
+<div style="max-width: 600px; margin: 2em auto; border-radius: 12px; padding: 20px; background-color: #1e1e1e; color: #f0f0f0; font-family: 'Segoe UI', sans-serif; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
+<h2 style="text-align: center; margin-bottom: 1em; color: #ffffff;">🌌 Fragmentos do Caos – Sites Relacionados</h2>
+<ul style="list-style: none; padding: 0; font-size: 1.1em;">
+<li style="margin-bottom: 1em;">
+      <strong>📚 Blogue Principal:</strong><br />
+      <a href="https://fasgoncalves.github.io/fragmentoscaos-html" target="_blank" style="color: #90caf9; text-decoration: none;"><br />
+        https://fasgoncalves.github.io/fragmentoscaos-html<br />
+      </a>
+    </li>
+<li style="margin-bottom: 1em;">
+      <strong>📘 Ebooks "Fragmentos do Caos":</strong><br />
+      <a href="https://fasgoncalves.github.io/hugo.fragmentoscaos" target="_blank" style="color: #90caf9; text-decoration: none;"><br />
+        https://fasgoncalves.github.io/hugo.fragmentoscaos<br />
+      </a>
+    </li>
+<li>
+      <strong>🌀 Carrossel de Artigos:</strong><br />
+      <a href="https://fasgoncalves.github.io/indice.fragmentoscaos" target="_blank" style="color: #90caf9; text-decoration: none;"><br />
+        https://fasgoncalves.github.io/indice.fragmentoscaos<br />
+      </a>
+    </li>
+</ul>
+<p style="text-align: center; font-style: italic; margin-top: 2em; color: #cccccc;">
+    Uma constelação de ideias, palavras e caos criativo – ao teu alcance.
+  </p>
+</div>
+
+<p> A sua avaliação deste artigo é importante para nós. Obrigado.</p>
+
+<p><!-- wp:shortcode -->
+[avaliacao_5estrelas]
+<!-- /wp:shortcode --></p>
+
+<p><!--
+  Banner Slim "Pesquisa direta – Fragmentos do Caos"
+  ➤ Mais compacto, ideal para sidebar ou rodapé.
+--><section class="fc-banner-slim" role="region" aria-label="Pesquisa direta em Fragmentos do Caos">
+  <form class="fc-search-slim" action="https://webnews.fragmentoscaos.eu" method="GET" target="_blank" rel="noopener">
+    <label class="sr-only" for="fc-q-slim">Pesquisar</label>
+    <div class="fc-input-slim">
+      <svg class="fc-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 0 0 1.57-4.23 6.5 6.5 0 1 0-6.5 6.5 6.471 6.471 0 0 0 4.23-1.57l.27.28v.79l4.99 4.99 1.49-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+      <input id="fc-q-slim" name="q" type="search" placeholder="Pesquisar Fragmentos do Caos..." aria-label="Pesquisar publicações" />
+    </div>
+    <button class="fc-btn-slim" type="submit">🔍</button>
+  </form>
+</section><style>
+  :root{
+    --fc-bg-slim:#111627;
+    --fc-accent-slim:#7b61ff;
+    --fc-text-slim:#fff;
+    --fc-muted-slim:#aeb7d6;
+  }</p>
+
+<p>.fc-banner-slim{
+    position:relative; isolation:isolate;
+    margin:18px auto; padding:10px 14px;
+    color:var(--fc-text-slim);
+    background: linear-gradient(135deg, var(--fc-bg-slim), #1e244a);
+    border-radius:14px;
+    border:1px solid rgba(255,255,255,.08);
+  }
+  .fc-search-slim{ display:flex; gap:8px; align-items:stretch; }
+  .fc-input-slim{ position:relative; flex:1; }
+  .fc-input-slim input{
+    width:100%; height:38px; padding:0 34px 0 36px;
+    border-radius:10px; border:1px solid rgba(255,255,255,.16);
+    background: rgba(255,255,255,.05);
+    color:var(--fc-text-slim); outline:none;
+    font-size:14px;
+  }
+  .fc-input-slim input::placeholder{ color:var(--fc-muted-slim); }
+  .fc-input-slim input:focus{ border-color: var(--fc-accent-slim); box-shadow: 0 0 0 3px rgba(123,97,255,.35); }</p>
+
+<p>.fc-icon{ position:absolute; left:10px; top:50%; transform:translateY(-50%); width:18px; height:18px; opacity:.7; color:#cfe6ff; }</p>
+
+<p>.fc-btn-slim{
+    flex:0 0 auto; width:42px; height:38px;
+    border-radius:10px; border:1px solid rgba(123,97,255,.6);
+    background: var(--fc-accent-slim);
+    color:#fff; font-weight:bold; cursor:pointer;
+    transition: background .2s ease;
+  }
+  .fc-btn-slim:hover{ background:#9d87ff; }</p>
+
+<p>/* utilidade */
+  .sr-only{ position:absolute !important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+</style>
+<!-- /wp:post-content --></p>
+
+</body>
+</html>
