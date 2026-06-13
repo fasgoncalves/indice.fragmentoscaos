@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>O Plugin que Vê o Invisível: Humanos e Bots em Tempo Real no WordPress</title>
+    
+<style>
+body {
+    font-family: Arial, sans-serif;
+    padding: 1rem;
+    background-color: #fff;
+    color: #000;
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 2rem;
+    text-decoration: none;
+    color: #003366; /* azul escuro */
+    z-index: 1000;
+    background: none;
+    border: none;
+}
+
+@media (max-width: 768px) {
+    .close-button {
+        font-size: 2.5rem;
+    }
+}
+</style>
+
+</head>
+<body>
+
+    <a href="index.html" class="close-button" title="Voltar">✕</a>
+    <h1>O Plugin que Vê o Invisível: Humanos e Bots em Tempo Real no WordPress</h1>
+    <div class="meta">
+        <p><strong>📅 2025-10-14</strong></p>
+        <p><a href="https://fasgoncalves.github.io/fragmentoscaos-html/2025/10/o-plugin-que-ve-o-invisivel-humanos-e-bots-em-tempo-real-no-wordpress.html" target="_blank">🔗 Ver artigo original</a></p>
+    </div>
+
+<p><img src="https://fasgoncalves.github.io/indice.fragmentoscaos/images/o-plugin-que-ve-o-invisivel-humanos-e-bots-em-tempo-real-no-wordpress.png" alt="Miniatura do artigo" /></p>
+
+<div style="background-color:#000000 !important;color:#e8eef4 !important;padding:30px;font-family:'Georgia',serif;line-height:1.6;">
+
+  <!-- BOX DE FACTOS -->
+  <div style="border:1px solid #333;padding:15px;border-radius:10px;background:#111;margin-bottom:25px;">
+    <h4 style="color:#ffcc66 !important;margin-top:0;">📦 Ficha Técnica — Plugin “Visitantes Ativos Agora”</h4>
+    <ul style="list-style:none;margin:0;padding:0;font-size:15px;">
+      <li><strong>Versão:</strong> 3.6 (SofteLabs)</li>
+      <li><strong>Data:</strong> Outubro 2025</li>
+      <li><strong>Compatibilidade:</strong> WordPress 6.x / PHP 8+</li>
+      <li><strong>Tecnologias:</strong> PHP, MySQL, AJAX, Chart.js</li>
+      <li><strong>Funções principais:</strong> Contador humano em tempo real, deteção automática de bots, gráfico dinâmico, limpeza automática 24h</li>
+      <li><strong>Desenvolvido por:</strong> Francisco Gonçalves — SofteLabs</li>
+    </ul>
+  </div>
+
+  <h2 style="color:#ffcc66 !important;text-align:center;">Visitantes Ativos Agora — O Pulso Inteligente do Teu Website</h2>
+
+  <figure style="text-align:center;margin:20px 0;">
+    <img src="http://www.fragmentoscaos.eu/wp-content/uploads/2025/10/Screenshot_20251014_124054.jpg" alt="Painel Visitantes Ativos Agora" style="max-width:100%;border-radius:6px;box-shadow:0 6px 18px rgba(0,0,0,0.5);" />
+    <figcaption style="color:#bfb39a;font-size:13px;margin-top:8px;">Interface do plugin Visitantes Ativos Agora — a leitura viva do tráfego humano no WordPress.</figcaption>
+  </figure>
+
+  <p>No universo de zeros e uns, cada visitante é um batimento de luz. O plugin <strong>“Visitantes Ativos Agora”</strong> (versão 3.6) foi desenvolvido para tornar visível o ritmo real de um site — quantos humanos o habitam neste instante, e quantos robôs o rondam.</p>
+
+  <h3 style="color:#ffcc66 !important;">⚙️ O que faz</h3>
+  <p>Este plugin acrescenta ao painel administrativo do WordPress um <em>dashboard widget</em> e uma página dedicada no menu lateral, oferecendo:</p>
+  <ul>
+    <li><strong>Contador em tempo real</strong> de visitantes humanos e bots.</li>
+    <li>Gráfico dinâmico (via <em>Chart.js</em>) mostrando apenas os <strong>visitantes humanos</strong> ativos nos últimos cinco minutos.</li>
+    <li><strong>Atualização automática</strong> a cada 10 segundos.</li>
+    <li><strong>Limpeza automática</strong> de registos com mais de 24 horas.</li>
+  </ul>
+
+  <h3 style="color:#ffcc66 !important;">🧠 Deteção Inteligente</h3>
+  <p>A versão 3.6 introduz uma camada de análise inteligente que distingue <em>humanos</em> de <em>robôs</em> através do cabeçalho <code>User-Agent</code>. 
+  Termos como <code>bot</code>, <code>spider</code>, <code>crawl</code>, <code>wget</code> ou <code>bingpreview</code> são automaticamente identificados e classificados como acessos automáticos. 
+  Assim, o administrador vê no topo: <strong>👤 Humanos: X | 🤖 Bots: Y</strong>, enquanto o gráfico exibe apenas o tráfego humano — o verdadeiro pulso do site.</p>
+
+  <h3 style="color:#ffcc66 !important;">🔒 Estrutura e Privacidade</h3>
+  <p>Para garantir desempenho e anonimato, o plugin utiliza uma tabela dedicada de registo mínima e segura:</p>
+  <pre style="background:#111;padding:12px;border-radius:8px;color:#ffcc66;">
+CREATE TABLE wp_visitas_ativas (
+  id_hash VARCHAR(64) NOT NULL,
+  ultimo_acesso INT(11) NOT NULL,
+  tipo VARCHAR(10) DEFAULT 'humano',
+  PRIMARY KEY (id_hash)
+);
+  </pre>
+  <p>O campo <code>id_hash</code> é uma assinatura anónima gerada por <code>md5(IP + User-Agent)</code>. 
+  Nenhum endereço IP é guardado, apenas um identificador único, garantindo total conformidade com as boas práticas de privacidade.</p>
+
+  <h3 style="color:#ffcc66 !important;">⚡ Desempenho e Robustez</h3>
+  <p>O registo é efetuado com <code>$wpdb->replace()</code>, evitando duplicações e mantendo a tabela sempre leve. 
+  A limpeza automática remove entradas antigas (mais de 24h) e o sistema é compatível com cache, proxies e CDNs como Cloudflare ou Nginx reverso.</p>
+
+  <h3 style="color:#ffcc66 !important;">🔧 Instalação</h3>
+  <ol>
+    <li>Descarrega o ficheiro <strong>wp-visitas-ativos-v3_6.zip</strong>.</li>
+    <li>Em <em>WordPress → Plugins → Adicionar novo → Carregar plugin</em>.</li>
+    <li>Ativa-o e acede ao novo menu <strong>“Visitantes Ativos”</strong>.</li>
+  </ol>
+  <p>Imediatamente o painel exibirá o número de humanos e bots ativos, e um gráfico com o histórico recente. 
+  Uma leitura instantânea e visual da vitalidade do teu site.</p>
+
+  <h3 style="color:#ffcc66 !important;">💡 Para Desenvolvedores</h3>
+  <p>O código é limpo, modular e extensível. O hook <code>shutdown</code> garante execução mesmo em temas sem <code>wp_footer()</code>, e o modo de depuração cria registos em <code>wp-content/debug-visitas.log</code> quando o <code>WP_DEBUG</code> está ativo. 
+  A função <code>get_client_ip_from_headers()</code> identifica o IP real mesmo atrás de proxies ou redes privadas.</p>
+
+  <blockquote style="border-left:4px solid #ffcc66;padding-left:15px;margin:30px 0;font-style:italic;color:#ccc;">
+    “Cada visitante é uma partícula de tempo, e cada acesso, um eco de curiosidade. Ver o pulso é compreender a vida digital que criámos.”
+  </blockquote>
+
+  <hr style="border:1px solid #333;margin-top:40px;">
+  <p style="text-align:right;color:#888;">✍️ <strong>Francisco Gonçalves</strong> — SofteLabs / Fragmentos do Caos</p>
+</div>
+
+<p>[fc<em>footer</em>mini]</p>
+
+</body>
+</html>

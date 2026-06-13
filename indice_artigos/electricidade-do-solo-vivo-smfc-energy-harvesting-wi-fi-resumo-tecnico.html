@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Electricidade do Solo Vivo: SMFC + Energy Harvesting + Wi-Fi — Resumo Técnico</title>
+    
+<style>
+body {
+    font-family: Arial, sans-serif;
+    padding: 1rem;
+    background-color: #fff;
+    color: #000;
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 2rem;
+    text-decoration: none;
+    color: #003366; /* azul escuro */
+    z-index: 1000;
+    background: none;
+    border: none;
+}
+
+@media (max-width: 768px) {
+    .close-button {
+        font-size: 2.5rem;
+    }
+}
+</style>
+
+</head>
+<body>
+
+    <a href="index.html" class="close-button" title="Voltar">✕</a>
+    <h1>Electricidade do Solo Vivo: SMFC + Energy Harvesting + Wi-Fi — Resumo Técnico</h1>
+    <div class="meta">
+        <p><strong>📅 2026-01-20</strong></p>
+        <p><a href="https://fasgoncalves.github.io/fragmentoscaos-html/2026/01/electricidade-do-solo-vivo-smfc-energy-harvesting-wi-fi-resumo-tecnico.html" target="_blank">🔗 Ver artigo original</a></p>
+    </div>
+
+<p><img src="https://fasgoncalves.github.io/indice.fragmentoscaos/images/electricidade-do-solo-vivo-smfc-energy-harvesting-wi-fi-resumo-tecnico.png" alt="Miniatura do artigo" /></p>
+
+<div style="background:#0b0b0b; color:#e8eef4; font-family: Georgia, serif; line-height:2.2; padding:10px; text-align:left;">
+
+  <div style="display:none;">
+    <div itemscope itemtype="https://schema.org/NewsArticle">
+      <meta itemprop="headline" content="Electricidade do Solo Vivo: SMFC + Energy Harvesting + Wi-Fi — Resumo Técnico"/>
+      <meta itemprop="datePublished" content="2026-01-20"/>
+      <meta itemprop="dateModified" content="2026-01-20"/>
+      <meta itemprop="description" content="Resumo técnico (FC-Chronic-News) do paper sobre geração eléctrica com bactérias do solo (SMFC), arquitectura de colheita de energia, armazenamento em supercondensador e telemetria Wi-Fi com ESP32."/>
+      <meta itemprop="author" content="Francisco Gonçalves"/>
+      <meta itemprop="publisher" content="Fragmentos do Caos News Team"/>
+      <meta itemprop="image" content="http://www.fragmentoscaos.eu/wp-content/uploads/2026/01/file_0000000076d871f4b2cf757cb7e433af.png"/>
+      <meta itemprop="mainEntityOfPage" content="https://fasgoncalves.github.io/fragmentoscaos-html.html"/>
+    </div>
+  </div>
+
+  <div style="background:#111; border:1px solid #444; padding:12px; margin:10px 0;">
+    <div style="font-weight:bold; letter-spacing:1px; margin-bottom:8px;">
+      <span style="color:#ffcc66 !important;">BOX DE FACTOS</span>
+    </div>
+    <ul style="margin:0; padding-left:22px;">
+      <li><strong>Ideia central:</strong> usar bactérias electroactivas do solo para produzir electricidade (SMFC).</li>
+      <li><strong>Escala realista:</strong> micro-potência contínua (µW–mW), ideal para sensores/IoT, não para rede eléctrica.</li>
+      <li><strong>Desenho proposto:</strong> ânodo a 20–30 cm (anaeróbio) + cátodo a 5–10 cm (oxigenado).</li>
+      <li><strong>Engenharia crítica:</strong> colheita DC-DC + armazenamento em supercondensador + power-gating.</li>
+      <li><strong>Telemetria:</strong> nó Wi-Fi (ESP32-C3) em “modo relâmpago” (liga, envia, desliga).</li>
+      <li><strong>Objectivo prático:</strong> sensores autónomos de solo (agro/ambiente) sem manutenção frequente.</li>
+    </ul>
+  </div>
+
+  <h2 style="text-align:center; margin:18px 0 10px 0;">
+    <span style="color:#ffcc66 !important; font-size:34px;">Electricidade do Solo Vivo: SMFC + Harvesting + Wi-Fi — Resumo Técnico</span>
+  </h2>
+
+  <div style="border-left:4px solid #ffcc66; padding:10px 14px; margin:14px 0; font-style:italic;">
+    “Quando o solo respira em silêncio, há um rio invisível de electrões a correr por baixo dos nossos pés.
+A tecnologia não os inventa — apenas aprende a escutá-los.”
+  </div>
+
+  <h3 style="color:#ffcc66 !important;">1) O que é uma SMFC (Soil Microbial Fuel Cell)</h3>
+  <p>
+    Uma <strong>SMFC</strong> é uma célula electroquímica que tira proveito de comunidades microbianas do solo. Em zonas pobres em oxigénio, certas bactérias oxidam matéria orgânica e libertam electrões. Se colocarmos um eléctrodo condutor (o <strong>ânodo</strong>) nesse ambiente anaeróbio, os microrganismos conseguem “entregar” electrões ao eléctrodo através de mecanismos de transferência extracelular (biofilme, mediadores, vias condutoras).
+Esses electrões seguem pelo circuito externo até ao <strong>cátodo</strong>, situado numa zona mais oxigenada perto da superfície, onde o oxigénio é reduzido e o circuito fecha-se.
+  </p>
+
+  <h3 style="color:#ffcc66 !important;">2) A verdade prática: potência pequena, valor enorme</h3>
+  <p>O ponto-chave do paper anexo é a engenharia de honestidade : <strong>SMFC não é central eléctrica</strong>.
+É energia humilde — mas <strong>contínua</strong>, silenciosa e distribuída. O “milagre” não está em alimentar uma casa; está em manter <strong>sensores e telemetria</strong> a funcionar em locais onde baterias apodrecem e painéis solares falham (sombra, inverno, vandalismo, subterrâneo).
+  </p>
+
+  <h3 style="color:#ffcc66 !important;">3) Desenho de referência (replicável e robusto)</h3>
+  <p>A arquitectura proposta é vertical e simples, usando o próprio gradiente do solo:
+  </p>
+  <ul style="padding-left:22px;">
+    <li><strong>Ânodo:</strong> 20–30 cm de profundidade (zona anaeróbia), com feltro/tecido de carbono ou grafite porosa (alta área).</li>
+    <li><strong>Cátodo:</strong> 5–10 cm da superfície (zona oxigenada), idealmente um <strong>air-cathode</strong> com carbono activado e camada difusora hidrofóbica.</li>
+    <li><strong>Separação:</strong> o solo actua como separador natural (evita membranas caras e frágeis).</li>
+    <li><strong>Dimensões iniciais:</strong> eléctrodos 10×10 cm a 15×15 cm; distância efectiva 15–25 cm.</li>
+  </ul>
+
+  <h3 style="color:#ffcc66 !important;">4) O coração do sistema: colheita e armazenamento</h3>
+  <p>A SMFC fornece tensão baixa e variável. Para transformar micro-potência em energia útil, o paper define uma cadeia completa:
+  </p>
+  <ul style="padding-left:22px;">
+    <li><strong>Harvester DC-DC</strong> (arranque ultra-baixo) para elevar tensões pequenas.</li>
+    <li><strong>Supercondensador</strong> (ex.: 5–10 F) como “depósito” de energia.</li>
+    <li><strong>Regulação</strong> para 3,3 V (rail estável para electrónica).</li>
+    <li><strong>Power-gating</strong> (MOSFET + supervisor) para manter o nó totalmente desligado até existir energia suficiente.</li>
+  </ul>
+  <p>Em termos simples: <strong>carregar lentamente</strong>… para depois <strong>gastar depressa</strong> e voltar a dormir.
+  </p>
+
+  <h3 style="color:#ffcc66 !important;">5) Wi-Fi com SMFC: o truque do “modo relâmpago”</h3>
+  <p>Wi-Fi é exigente, com picos de corrente elevados. A solução proposta torna-o viável com SMFC ao impor disciplina energética: o microcontrolador (ex.: <strong>ESP32-C3</strong>) só é alimentado quando a tensão do supercondensador ultrapassa um limiar (V<sub>ON</sub>).
+Depois, executa uma sequência curta:
+  </p>
+  <ul style="padding-left:22px;">
+    <li><strong>Arranca</strong> → mede sensores → liga Wi-Fi (timeout curto) → envia payload mínimo → <strong>desliga Wi-Fi</strong> → <strong>desliga-se</strong>.</li>
+    <li><strong>Evita protocolos pesados</strong> quando possível (TLS aumenta custo energético).</li>
+    <li><strong>Envia para servidor local</strong> (HTTP/MQTT) ou sistema de alertas (ex.: ntfy).</li>
+  </ul>
+
+  <h3 style="color:#ffcc66 !important;">6) Metodologia de validação (dados “de paper”)</h3>
+  <p>O resumo inclui um protocolo experimental pragmático para caracterização e comparação:
+  </p>
+  <ul style="padding-left:22px;">
+    <li><strong>Voc</strong> (tensão em circuito aberto) e evolução temporal.</li>
+    <li><strong>Curvas de polarização</strong> (varrimento de cargas) para obter V-I-P e P<sub>max</sub>.</li>
+    <li><strong>Resistência interna</strong> por declive V–I.</li>
+    <li><strong>Impacto</strong> de humidade/temperatura/solo.</li>
+    <li><strong>Energia por transmissão</strong> pelo desnível do supercondensador: <strong>E = ½·C·(V²<sub>antes</sub> − V²<sub>depois</sub>)</strong>.</li>
+  </ul>
+
+  <h3 style="color:#ffcc66 !important;">7) Conclusão: tecnologia pequena, futuro grande</h3>
+  <p>O paper conclui que as SMFC, quando acopladas a electrónica moderna de harvesting e firmware energia-consciente, viabilizam <strong>sensores autónomos</strong> e redes IoT de baixa manutenção. A inovação não é apenas biológica: é a combinação do <strong>solo vivo</strong> com engenharia de sistema — transformando micro-energia contínua em acção útil e repetível.
+  </p>
+
+  <div style="margin:18px 0; padding:12px; background:#111; border:1px solid #333;">
+    <h3 style="color:#ffcc66 !important; margin-top:0;">Notas para implementação rápida</h3>
+    <ul style="padding-left:22px; margin:0;">
+      <li><strong>Primeiro protótipo:</strong> 1 SMFC + supercap 10 F + power-gating + ESP32-C3.</li>
+      <li><strong>Servidor local:</strong> endpoint HTTP simples no “Voltaire” para guardar dados e alimentar dashboard.</li>
+      <li><strong>Regra de ouro:</strong> o nó deve estar <strong>desligado</strong> a maior parte do tempo.</li>
+    </ul>
+  </div>
+<div style="color:#ffcc67;">
+<p>
+<strong>Nota importante:</strong>
+</p><p>
+Este artigo não promete milagres: promete método.
+A natureza já faz o trabalho difícil; nós só precisamos de aprender a capturar o sinal.
+Que sirva de inspiração às novas gerações para estudar, experimentar, falhar depressa e melhorar sempre.
+</p>
+<br>
+ - Francisco Gonçalves [2026]
+<br>
+</div>
+  <div style="border-top:1px solid #ffcc78; margin-top:22px; padding-top:12px; color:#ffcca0;">
+    <strong>Francisco Gonçalves</strong> — SofteLabs<br/>
+    <span style="opacity:0.9;">Texto em formato FC-Chronic-News • Co-autoria técnica: Augustus Veritas</span>
+  </div>
+
+
+<!-- BOTÃO FC-CHRONIC-NEWS: Download do Paper (PDF ou DOCX) -->
+<div style="text-align:left; margin:18px 0;">
+  <a href="https://fasgoncalves.github.io/fragmentoscaos-html/Files/SMFC_Paper_Journal_Ready_EN.pdf" target="_blank" rel="noopener"
+     style="
+       display:inline-flex;
+       align-items:center;
+       gap:10px;
+       padding:12px 16px;
+       border-radius:14px;
+       background:linear-gradient(180deg,#1a1a1a,#0b0b0b);
+       border:1px solid #ffcc66;
+       color:#ffcc66 !important;
+       text-decoration:none;
+       font-family:Georgia,serif;
+       font-size:16px;
+       font-weight:bold;
+       letter-spacing:0.3px;
+       box-shadow:0 10px 25px rgba(0,0,0,0.55);
+       transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+     "
+     onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 14px 32px rgba(0,0,0,0.65)';"
+     onmouseout="this.style.transform='translateY(0px)';this.style.boxShadow='0 10px 25px rgba(0,0,0,0.55)';">
+
+     <span style="
+       display:inline-flex;
+       width:34px;
+       height:34px;
+       border-radius:10px;
+       align-items:center;
+       justify-content:center;
+       background:#111;
+       border:1px solid rgba(255,204,102,0.45);
+       line-height:1;
+       font-size:18px;
+     ">⬇️</span>
+
+     <span style="display:inline-block;">
+       Download do Paper
+       <span style="display:block; font-size:12px; font-weight:normal; color:#e8eef4; opacity:0.85;">
+Electricity from Living Soil: A Practical Soil Microbial 
+Fuel Cell (SMFC)
+Architecture for Energy Harvesting and Wi‑Fi IoT        (PDF/DOCX • versão completa)
+       </span>
+     </span>
+
+     <span style="
+       margin-left:8px;
+       display:inline-block;
+       padding:4px 10px;
+       border-radius:999px;
+       background:rgba(255,204,102,0.10);
+       border:1px solid rgba(255,204,102,0.35);
+       font-size:12px;
+       font-weight:bold;
+     ">FC</span>
+  </a>
+
+  <div style="margin-top:8px; font-size:12px; color:#e8eef4; opacity:0.75; font-family:Georgia,serif;">
+
+  </div>
+</div>
+
+[leia]
+</div>
+
+<p>[fc<em>footer</em>mini]</p>
+
+</body>
+</html>
