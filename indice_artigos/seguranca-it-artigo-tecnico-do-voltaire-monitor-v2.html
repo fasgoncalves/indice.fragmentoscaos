@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Segurança IT - Artigo técnico do Voltaire-Monitor v2</title>
+    
+<style>
+body {
+    font-family: Arial, sans-serif;
+    padding: 1rem;
+    background-color: #fff;
+    color: #000;
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 2rem;
+    text-decoration: none;
+    color: #003366; /* azul escuro */
+    z-index: 1000;
+    background: none;
+    border: none;
+}
+
+@media (max-width: 768px) {
+    .close-button {
+        font-size: 2.5rem;
+    }
+}
+</style>
+
+</head>
+<body>
+
+    <a href="index.html" class="close-button" title="Voltar">✕</a>
+    <h1>Segurança IT - Artigo técnico do Voltaire-Monitor v2</h1>
+    <div class="meta">
+        <p><strong>📅 2026-01-28</strong></p>
+        <p><a href="https://fasgoncalves.github.io/fragmentoscaos-html/2026/01/seguranca-it-artigo-tecnico-do-voltaire-monitor-v2.html" target="_blank">🔗 Ver artigo original</a></p>
+    </div>
+
+<p><img src="https://fasgoncalves.github.io/indice.fragmentoscaos/images/seguranca-it-artigo-tecnico-do-voltaire-monitor-v2.png" alt="Miniatura do artigo" /></p>
+
+<div style="background:#0b0b0b; color:#e8eef4; font-family: Georgia, serif; line-height:2.2; padding:10px; text-align:left;">
+
+  <!-- Metadados Google News (oculto) -->
+  <div itemscope itemtype="https://schema.org/NewsArticle" style="display:none;">
+    <meta itemprop="headline" content="Voltaire-Monitor v2: Monitorização, Hardening e SIPA com Disciplina Operacional" />
+    <meta itemprop="datePublished" content="2026-01-28" />
+    <meta itemprop="dateModified" content="2026-01-28" />
+    <meta itemprop="description" content="Artigo técnico aprofundado sobre o Voltaire-Monitor v2: arquitectura, hardening systemd, segredos fora do código, integridade eficiente, contagem incremental de falhas SSH, deduplicação/cooldown de alertas e mitigação segura de incidentes." />
+    <meta itemprop="author" content="Francisco Gonçalves" />
+    <meta itemprop="publisher" content="Fragmentos do Caos News Team" />
+    <meta itemprop="image" content="http://www.fragmentoscaos.eu/wp-content/uploads/2026/01/Voltaire-Monitor.png" />
+    <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+      <meta itemprop="name" content="Fragmentos do Caos" />
+      <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+        <meta itemprop="url" content="http://www.fragmentoscaos.eu/wp-content/uploads/2025/11/fc_logo_round.png" />
+      </div>
+    </div>
+  </div>
+
+  <!-- 1️⃣ BOX DE FACTOS -->
+  <div style="background:#111; border:1px solid #444; border-radius:10px; padding:12px; margin:10px 0;">
+    <div style="font-weight:bold; letter-spacing:1px; margin-bottom:8px;">
+      <span style="color:#ffcc66 !important;">BOX DE FACTOS</span>
+    </div>
+    <ul style="margin:0; padding-left:18px;">
+      <li><strong>Versão:</strong> <strong>Voltaire-Monitor v2</strong> (Monitor + Shield + SIPA).</li>
+      <li><strong>Objectivo:</strong> observabilidade pragmática + detecção de padrões de ataque + mitigação controlada.</li>
+      <li><strong>Princípio central:</strong> <strong>não criar uma nova vulnerabilidade</strong> ao tentar vigiar tudo.</li>
+      <li><strong>Operação:</strong> serviço <strong>systemd</strong> endurecido (hardening), logs com retenção, alertas deduplicados.</li>
+      <li><strong>Segredos:</strong> credenciais e tokens <strong>fora do código</strong> (EnvironmentFile / variáveis de ambiente).</li>
+      <li><strong>Mitigação:</strong> escalonada (alerta → contenção suave → isolamento com failsafe), evitando auto-sabotagem.</li>
+    </ul>
+  </div>
+
+  <!-- 2️⃣ TÍTULO PRINCIPAL -->
+  <h2 style="color:#ffcc66 !important; font-size:34px; margin:14px 0 6px 0; text-align:left;">
+    <span style="color:#ffcc66 !important;">Voltaire-Monitor v2: Monitorização, Hardening e SIPA com Disciplina Operacional</span>
+  </h2>
+
+  <!-- 3️⃣ EXCERTO -->
+  <div style="border-left:4px solid #ffcc66; padding:10px 12px; margin:10px 0 18px 0; background:#0f0f0f; font-style:italic;">Um monitor que abre portas a mais é um sentinela que adormece com a chave na mão. O <strong>Voltaire-Monitor v2</strong> assume uma regra simples: <strong>vigiar sem se tornar vulnerável</strong>, alertar com sinal e não com ruído, e mitigar sem cortar a própria garganta operacional.
+  </div>
+
+  <!-- 4️⃣ CORPO -->
+  <h3 style="color:#ffcc66 !important; margin-top:18px;"><span style="color:#ffcc66 !important;">1. Arquitectura: quatro blocos e uma promessa</span></h3>
+  <p>O Voltaire-Monitor v2 organiza-se em quatro blocos operacionais, desenhados para minimizar superfície de ataque e maximizar utilidade:
+<strong>Sensores</strong> (métricas locais), <strong>Verificações activas</strong> (serviços/saúde), <strong>Motor de regras</strong> (limiares, janelas, histerese), e <strong>Alertas + Auditoria</strong> (ntfy + logging estruturado).
+  </p>
+  <p>A promessa é clara: cada componente deve poder falhar sem comprometer os restantes, e sem transformar o servidor num “laboratório de permissões”.
+O monitor não é decoração. É disciplina.
+  </p>
+
+  <h3 style="color:#ffcc66 !important;"><span style="color:#ffcc66 !important;">2. Segredos fora do código: o primeiro selo de segurança</span></h3>
+  <p>A versão v2 elimina credenciais hardcoded e adopta um modelo simples e robusto: <strong>EnvironmentFile</strong> (systemd) e variáveis de ambiente.
+Isto evita fugas acidentais em backups, repositórios, cópias, logs ou screenshots — a causa mais banal de incidentes evitáveis.
+  </p>
+  <div style="background:#101010; border:1px solid #333; border-radius:10px; padding:12px; margin:10px 0;">
+    <div style="color:#ffcc66 !important; font-weight:bold; margin-bottom:6px;">Modelo adoptado</div>
+    <ul style="margin:0; padding-left:18px;">
+      <li><strong>/etc/voltaire-monitor.env</strong> com permissões restritas (ex.: 600).</li>
+      <li>Uso preferencial de <strong>tokens</strong> em vez de user/password (quando o endpoint o permite).</li>
+      <li>Transporte seguro: <strong>HTTPS</strong> sempre que possível, mesmo em LAN (segredos não devem “viajar nus”).</li>
+    </ul>
+  </div>
+  <p>Além disso, a v2 impõe uma regra de ouro: <strong>nunca imprimir segredos em logs</strong>. Um monitor que escreve tokens é um traidor involuntário.
+  </p>
+
+  <h3 style="color:#ffcc66 !important;"><span style="color:#ffcc66 !important;">3. Execução como serviço systemd: hardening a sério</span></h3>
+  <p>Correr 24/7 implica systemd. Mas correr 24/7 com segurança implica <strong>confinamento</strong>. A v2 adopta as directivas de hardening que reduzem o impacto de falhas, vulnerabilidades em dependências e execuções indevidas.
+  </p>
+  <p>O princípio do menor privilégio é aplicado de forma prática: utilizador dedicado, filesystem protegido, proibição de elevação, e permissões de escrita apenas para <strong>estado</strong> e <strong>logs</strong>.
+  </p>
+
+  <div style="border-left:4px solid #2f7d32; padding:10px 12px; margin:10px 0; background:#0f130f;">
+    <span style="color:#9be29f; font-weight:bold;">Nota operacional:</span> se o monitor apenas envia alertas, não deve “ouvir” rede. Se precisa de rede, deve ser <strong>mínima</strong>, explícita e auditável.
+  </div>
+
+  <h3 style="color:#ffcc66 !important;"><span style="color:#ffcc66 !important;">4. Métricas e thresholds: histerese, janelas e verdade útil</span></h3>
+  <p>CPU, memória e disco continuam no centro — mas com critério. A v2 evita o “pisca-pisca” de alertas com:   <strong>VERIFICATIONS</strong> (persistência), <strong>histerese</strong> (limiar de disparo e limiar de normalização), e <strong>janelas temporais</strong> (um pico curto não é uma crise).
+  </p>
+  <p>Também aqui se impõe um detalhe essencial: o intervalo real do ciclo não pode ser uma ficção.
+A v2 mede o tempo gasto no loop e ajusta o sleep para manter cadência estável.
+  </p>
+
+  <h3 style="color:#ffcc66 !important;"><span style="color:#ffcc66 !important;">5. Falhas SSH: contagem incremental (o fim dos falsos positivos)</span></h3>
+  <p>Um erro clássico em monitores “caseiros” é contar falhas SSH com greps cumulativos em <em>auth.log</em>. Isso cresce indefinidamente e fabrica “ataques” onde só existe história antiga. A v2 corrige este problema com um modelo incremental:
+  </p>
+  <ul style="padding-left:18px;">
+    <li>Guardar <strong>offset</strong> (posição) do ficheiro lido no ciclo anterior.</li>
+    <li>Ler apenas <strong>linhas novas</strong> desde a última posição.</li>
+    <li>Contar “Failed password” apenas na janela recente (ex.: últimos minutos).</li>
+  </ul>
+  <p>O resultado é imediato: o SIPA passa a reflectir <strong>acontecimentos</strong>, não “cicatrizes antigas”.
+  </p>
+
+  <h3 style="color:#ffcc66 !important;"><span style="color:#ffcc66 !important;">6. Integridade: SHA-256 e periodicidade inteligente</span></h3>
+  <p>A v2 endurece o controlo de integridade, eliminando duas fragilidades comuns: hashes fracos e leitura parcial de ficheiros.
+Em vez de MD5 e 4 KB, adopta-se <strong>SHA-256</strong> e leitura por blocos, com limite razoável, reduzindo a probabilidade de bypass.
+  </p>
+  <p>Mais importante ainda: a verificação de integridade deixa de ser feita a cada ciclo base.
+Em servidores reais, varrer recursivamente <strong>/etc</strong> e <strong>/usr/bin</strong> a cada 10 segundos é uma forma elegante de criar carga… e de treinar o operador a ignorar alertas.
+  </p>
+  <p>A v2 aplica <strong>periodicidade</strong> (ex.: 10–30 minutos) e, quando necessário, amostragem dirigida.
+Segurança não é pressa. É consistência.
+  </p>
+
+  <h3 style="color:#ffcc66 !important;"><span style="color:#ffcc66 !important;">7. Conexões e tráfego: medir sem incendiar o CPU</span></h3>
+  <p>A versão v2 assume uma realidade: certas chamadas (ex.: listagens completas de sockets) podem ser pesadas.
+Assim, a detecção de “conexões elevadas” privilegia fontes de baixo custo e indicadores sumários, e o tráfego é medido por diferença temporal (delta) com limiares claros.
+  </p>
+  <p>A ideia é simples: o monitor não deve criar o mesmo sintoma que pretende detectar.
+  </p>
+
+  <h3 style="color:#ffcc66 !important;"><span style="color:#ffcc66 !important;">8. SIPA: pontuação inteligente com estados (NORMAL / SUSPEITO / ATAQUE)</span></h3>
+  <p>O <strong>SIPA</strong> (Sistema Inteligente de Pontuação de Ataque) mantém o modelo de score, mas ganha disciplina: eventos têm peso, persistência, e transição de estados. Isto reduz alarmes espúrios e melhora a acção.
+  </p>
+  <ul style="padding-left:18px;">
+    <li><strong>Regras ponderadas:</strong> falhas SSH, picos de tráfego, alterações críticas, CPU anómala, instabilidade de rede.</li>
+    <li><strong>Janelas temporais:</strong> cada regra mede o “agora” (últimos minutos), não o “desde sempre”.</li>
+    <li><strong>Cooldown de alertas:</strong> um ataque não pode gerar spam; há deduplicação e escalada.</li>
+  </ul>
+
+  <div style="background:#101010; border:1px solid #333; border-radius:10px; padding:12px; margin:10px 0;">
+    <div style="color:#ffcc66 !important; font-weight:bold; margin-bottom:6px;">Critério que muda tudo</div>
+    <p style="margin:0;">Um alerta só vale se for accionável. Na v2, cada notificação inclui: <strong>o que aconteceu</strong>, <strong>porquê</strong>,
+9<strong>pontuação</strong> e <strong>próximo passo</strong>.
+    </p>
+  </div>
+
+  <h3 style="color:#ffcc66 !important;"><span style="color:#ffcc66 !important;">9. Mitigação escalonada: conter sem auto-sabotagem</span></h3>
+  <p>O gesto dramático de desligar a bridge ou interfaces (<em>br0/ens, etc</em>) pode ser vital… ou pode deixar-te às escuras no pior momento.
+A v2 substitui “pânico automático” por mitigação escalonada:
+  </p>
+  <ul style="padding-left:18px;">
+    <li><strong>Nível 1:</strong> alerta crítico (com contexto e recomendação de acção).</li>
+    <li><strong>Nível 2:</strong> contenção suave (ex.: bloquear IPs ofensores, rate limiting, reforço de firewall).</li>
+    <li><strong>Nível 3:</strong> isolamento temporário com <strong>failsafe</strong> (reversão automática após X minutos) ou com confirmação humana.</li>
+  </ul>
+  <p>Isto protege o servidor sem destruir a tua capacidade de resposta. Segurança sem operação é teatro; operação sem segurança é roleta.
+  </p>
+
+  <h3 style="color:#ffcc66 !important;"><span style="color:#ffcc66 !important;">10. Logs, retenção e forense: a memória que te salva amanhã</span></h3>
+  <p>A v2 mantém métricas em CSV diário (útil para análise e gráficos) e adiciona disciplina de logging: níveis, IDs de evento, e mensagens de “recuperação” quando um incidente normaliza.
+  </p>
+  <p>Complementarmente, recomenda-se rotação (logrotate) e integração com journald, para que o monitor seja também um “relato” do sistema e não apenas um alarme de incêndio.
+  </p>
+
+  <!-- 5️⃣ EPÍLOGO -->
+  <h3 style="color:#ffcc66 !important;"><span style="color:#ffcc66 !important;">Conclusão: um guardião que não mente</span></h3>
+  <p>O <strong>Voltaire-Monitor v2</strong> não tenta ser um SIEM corporativo nem um “dashboard de vaidade”.
+Ele assume o essencial: medir, correlacionar, alertar e mitigar — com o menor risco possível de se tornar ele próprio um problema.
+  </p>
+  <p>No fundo, é isto: <strong>segurança é disciplina aplicada ao tempo</strong>. E um servidor bem guardado é um servidor que, mesmo sob ataque, continua a contar a verdade — com logs, com sinais, e com escolhas operacionais que não traem o administrador.
+  </p>
+
+  <!-- 6️⃣ ASSINATURA -->
+  <div style="border-top:1px solid #ffcc78; margin-top:18px; padding-top:12px; color:#ffcca0;">Artigo Técnico de : <div><strong>Francisco Gonçalves</strong></div>
+    <div style="opacity:0.95;">Fragmentos do Caos News Team.</div>
+  </div>
+
+  [backsites]
+<p style="margin-top:14px;">
+  Para mais informações pode contactar-nos em
+  <a href="https://fasgoncalves.github.io/fragmentoscaos-html/blog-fragmentos-do-caos.html" style="color:#ffcc66 !important; text-decoration:none;">
+    <strong>botão de Contactos</strong>
+  </a>
+</p>
+</div>
+
+<p>[fc<em>footer</em>mini]</p>
+
+</body>
+</html>
