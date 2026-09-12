@@ -1,0 +1,5 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://fasgoncalves.github.io/indice.fragmentoscaos/siteurl.xml
+

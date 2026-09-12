@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>DGX Station + DeepSeek: engenharia de IA local com memória coerente, contexto longo e agentes com ferramentas</title>
+    
+<style>
+body {
+    font-family: Arial, sans-serif;
+    padding: 1rem;
+    background-color: #fff;
+    color: #000;
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 2rem;
+    text-decoration: none;
+    color: #003366; /* azul escuro */
+    z-index: 1000;
+    background: none;
+    border: none;
+}
+
+@media (max-width: 768px) {
+    .close-button {
+        font-size: 2.5rem;
+    }
+}
+</style>
+
+</head>
+<body>
+
+    <a href="index.html" class="close-button" title="Voltar">✕</a>
+    <h1>DGX Station + DeepSeek: engenharia de IA local com memória coerente, contexto longo e agentes com ferramentas</h1>
+    <div class="meta">
+        <p><strong>📅 2026-03-02</strong></p>
+        <p><a href="https://fasgoncalves.github.io/fragmentoscaos-html/2026/03/dgx-station-deepseek-engenharia-de-ia-local-com-memoria-coerente-contexto-longo-e-agentes-com-ferramentas.html" target="_blank">🔗 Ver artigo original</a></p>
+    </div>
+
+<p><img src="https://fasgoncalves.github.io/indice.fragmentoscaos/images/dgx-station-deepseek-engenharia-de-ia-local-com-memoria-coerente-contexto-longo-e-agentes-com-ferramentas.jpg" alt="Miniatura do artigo" /></p>
+
+<div style="background:#0b0b0b;color:#e8eef4;font-family:Georgia,serif;line-height:2.2;padding:10px;text-align:left;">
+
+  <!-- Metadados Google News (oculto / compatível WP) -->
+  <div itemscope itemtype="https://schema.org/NewsArticle" style="display:none;">
+    <meta itemprop="headline" content="DGX Station + DeepSeek: engenharia de IA local com memória coerente, contexto longo e agentes com ferramentas" />
+    <meta itemprop="datePublished" content="2026-03-02" />
+    <meta itemprop="dateModified" content="2026-03-02" />
+    <meta itemprop="description" content="Artigo técnico sobre a NVIDIA DGX Station (GB300 Grace Blackwell Ultra, 784GB de memória coerente, ConnectX-8 800Gb/s) e a evolução do DeepSeek (V3.2 e V3.2-Exp com DSA), com abordagem prática para inferência, RAG e agentes on-prem." />
+    <meta itemprop="author" content="Francisco Gonçalves" />
+    <meta itemprop="publisher" content="Fragmentos do Caos" />
+    <meta itemprop="image" content="http://www.fragmentoscaos.eu/wp-content/uploads/2025/11/fc_logo_round.png" />
+    <meta itemprop="mainEntityOfPage" content="https://fasgoncalves.github.io/fragmentoscaos-html.html" />
+  </div>
+
+  <!-- 1️⃣ BOX DE FACTOS -->
+  <div style="background:#111;border:1px solid #444;border-radius:12px;padding:14px;margin:10px 0 18px 0;">
+    <div style="font-weight:bold;margin-bottom:10px;letter-spacing:1px;">
+      <span style="color:#ffcc66 !important;">BOX DE FACTOS</span>
+    </div>
+    <ul style="margin:0;padding-left:18px;">
+      <li><strong>DGX Station</strong>: primeira workstation “deskside” com o <strong>NVIDIA GB300 Grace Blackwell Ultra Desktop Superchip</strong>, com <strong>~784GB</strong> de memória unificada/coerente (a NVIDIA refere também ~775GB em descrições), orientada a treino e inferência de larga escala no posto de trabalho.</li>
+      <li><strong>Rede</strong>: inclui <strong>ConnectX-8 SuperNIC</strong> até <strong>800Gb/s</strong>, pensado para “multi-station scaling” e integração com infra-estrutura empresarial.</li>
+      <li><strong>DeepSeek-V3.2</strong> (01/12/2025): primeiro modelo da DeepSeek a integrar “thinking” directamente no <strong>tool-use</strong> e a suportar ferramentas em modo “thinking” e “non-thinking”.</li>
+      <li><strong>DeepSeek-V3.2-Exp</strong> (29/09/2025): introduz <strong>DeepSeek Sparse Attention (DSA)</strong> para contexto longo com menor custo computacional; anunciado como passo intermédio para a próxima arquitectura.</li>
+      <li><strong>Mensagem técnica</strong>: a combinação “memória coerente massiva + contexto longo eficiente + tool-use” torna viável a IA local para RAG, agentes e automação empresarial com dados sensíveis “em casa”.</li>
+    </ul>
+  </div>
+
+  <!-- 2️⃣ TÍTULO -->
+  <h2 style="margin:10px 0 14px 0;color:#ffcc66 !important;font-size:34px;line-height:1.2;text-align:left;">
+    <span style="color:#ffcc66 !important;">DGX Station + DeepSeek: engenharia de IA local com memória coerente, contexto longo e agentes com ferramentas</span>
+  </h2>
+
+  <!-- 3️⃣ EXCERTO -->
+  <div style="border-left:4px solid #ffcc66;padding:10px 12px;margin:0 0 18px 0;background:rgba(255,204,102,0.06);font-style:italic;">A era do “modelo na nuvem” continua — mas há um regresso silencioso ao terreno: executar, governar e auditar IA dentro da própria infra-estrutura.
+A DGX Station é o ferro; o DeepSeek V3.2 é a mente que aprende a operar com ferramentas.
+  </div>
+
+  <!-- IMAGEM (opcional) -->
+  <div style="margin:14px 0 18px 0;padding:10px;background:#0f0f0f;border:1px solid #222;border-radius:12px;">
+    <div style="font-size:14px;opacity:.9;margin-bottom:8px;">
+      <span style="color:#ffcc66 !important;"><strong>Imagem</strong></span> — (substituir pelo URL depois de carregares no WordPress)
+    </div>
+    <img src="http://www.fragmentoscaos.eu/wp-content/uploads/2026/03/Screenshot_20260302_110047.jpg" alt="DGX Station e IA local com DeepSeek" style="width:100%;height:auto;border-radius:10px;display:block;border:1px solid #222;">
+  </div>
+
+  <!-- 4️⃣ CORPO -->
+  <h3 style="color:#ffcc66 !important;margin:18px 0 6px 0;text-align:left;">
+    <span style="color:#ffcc66 !important;">1) DGX Station: o que interessa tecnicamente (e porquê)</span>
+  </h3>
+
+  <p style="margin:0 0 12px 0;">A DGX Station não é “mais uma workstation com GPU”. É uma máquina concebida como <strong>plataforma coerente</strong>: CPU+GPU ligados por interconexão de altíssima largura de banda, com <strong>memória unificada/coerente em escala anormal</strong> para o mundo “deskside”. Isto altera o tipo de trabalho que se consegue fazer localmente: modelos maiores, contextos longos, múltiplos serviços, e pipelines completos (indexação, inferência, pós-processamento, auditoria) sem “trocas de contexto” de infra-estrutura.
+  </p>
+
+  <p style="margin:0 0 12px 0;">A NVIDIA posiciona a DGX Station como o primeiro sistema “deskside” com o <strong>GB300 Grace Blackwell Ultra</strong>, com <strong>~784GB</strong> de memória unificada e conectividade de rede até <strong>800Gb/s</strong> via <strong>ConnectX-8</strong>. O recado é claro: não é apenas potência; é <strong>capacidade de caber</strong>.
+E “caber” é o que decide se um modelo e o seu contexto vivem localmente ou se são expulsos para a nuvem.
+  </p>
+
+  <h3 style="color:#ffcc66 !important;margin:18px 0 6px 0;text-align:left;">
+    <span style="color:#ffcc66 !important;">2) Memória coerente: a arma silenciosa</span>
+  </h3>
+
+  <p style="margin:0 0 12px 0;">Em IA aplicada, o gargalo real raramente é “FLOPS”. É <strong>memória</strong>: quanto cabe, com que latência, e com que custo de movimentação.
+A memória coerente em grande escala permite:
+  </p>
+
+  <ul style="margin:0 0 12px 22px;">
+    <li><strong>Modelos maiores</strong> (ou mais instâncias do mesmo modelo) sem amputações brutais;</li>
+    <li><strong>Contexto longo</strong> sem “pagamento” excessivo em trocas CPU↔GPU;</li>
+    <li><strong>RAG robusto</strong> com indexação, re-ranking e caches persistentes no mesmo nó;</li>
+    <li><strong>Serviços paralelos</strong> (API, embeddings, vector DB, auditoria, observabilidade) sem a máquina entrar em asfixia.</li>
+  </ul>
+
+  <p style="margin:0 0 12px 0;">Em termos de arquitectura, isto dá-te liberdade: podes desenhar um “nó IA” que seja simultaneamente laboratório e produção, com camadas de governação e logging que, em cloud, muitas vezes ficam subfinanciadas por custo.
+  </p>
+
+  <h3 style="color:#ffcc66 !important;margin:18px 0 6px 0;text-align:left;">
+    <span style="color:#ffcc66 !important;">3) DeepSeek V3.2: “thinking” a operar com ferramentas</span>
+  </h3>
+
+  <p style="margin:0 0 12px 0;">O salto do DeepSeek-V3.2 é conceptual e prático: integrar “thinking” no <strong>tool-use</strong>.
+Isto aproxima o modelo do papel de <strong>agente</strong> (planeia, chama ferramentas, valida, volta a chamar, conclui) em vez de ser apenas um “oráculo textual”.
+A própria DeepSeek refere treino de agentes com síntese massiva de dados cobrindo milhares de ambientes e dezenas de milhares de instruções complexas.
+  </p>
+
+  <p style="margin:0 0 12px 0;">Para uma empresa, “tool-use” é o nome civilizado de coisas concretas:
+<strong>consultar base de dados</strong>, <strong>chamar um serviço interno</strong>, <strong>gerar orçamento</strong>, <strong>validar margens</strong>,
+<strong>ler um PDF indexado</strong>, <strong>criar uma proposta</strong>, <strong>abrir um ticket</strong>, <strong>produzir relatório</strong>.
+É aqui que a IA deixa de ser conversa e passa a ser <strong>processo</strong>.
+  </p>
+
+  <h3 style="color:#ffcc66 !important;margin:18px 0 6px 0;text-align:left;">
+    <span style="color:#ffcc66 !important;">4) V3.2-Exp e DSA: contexto longo com menos imposto computacional</span>
+  </h3>
+
+  <p style="margin:0 0 12px 0;">A DeepSeek-V3.2-Exp introduz <strong>DeepSeek Sparse Attention (DSA)</strong>, apontada como mecanismo para reduzir custo computacional e melhorar desempenho em texto de sequência longa.
+Isto interessa porque a IA empresarial vive de <strong>documentos longos</strong>: procedimentos, contratos, catálogos, histórico de suporte, relatórios técnicos, normativos.
+Contexto longo é a diferença entre “resposta bonita” e “resposta correcta, com fonte e coerência”.
+  </p>
+
+  <h3 style="color:#ffcc66 !important;margin:18px 0 6px 0;text-align:left;">
+    <span style="color:#ffcc66 !important;">5) Arquitectura recomendada: DGX Station como nó on-prem (padrão de produção)</span>
+  </h3>
+
+  <p style="margin:0 0 12px 0;">Um desenho “limpo” (e auditável) para pôr DeepSeek em produção na DGX Station:
+  </p>
+
+  <div style="background:#0f0f0f;border:1px solid #222;border-radius:12px;padding:12px 14px;margin:0 0 12px 0;">
+    <div style="color:#ffcc66 !important;font-weight:bold;margin-bottom:8px;">Pipeline (alto nível)</div>
+    <ol style="margin:0;padding-left:18px;">
+      <li><strong>Ingestão</strong>: documentos (PDF, DOCX, HTML, e-mail), normalização e metadados (departamento, permissões, datas).</li>
+      <li><strong>Embeddings</strong>: geração de vectores e armazenamento em <strong>vector DB</strong> (com colecções por domínio e ACLs).</li>
+      <li><strong>RAG</strong>: retrieval + re-ranking + montagem de contexto com citações internas (IDs de documento e páginas).</li>
+      <li><strong>Inferência</strong>: DeepSeek-V3.2 como “motor”, com <strong>tool-use</strong> activado e limites de segurança.</li>
+      <li><strong>Ferramentas</strong>: conectores (ERP/CRM/SQL) e funções de negócio (ex.: cálculo de orçamento, validação de margens).</li>
+      <li><strong>Validação</strong>: regras determinísticas + verificação de campos críticos (ex.: valores, impostos, condições).</li>
+      <li><strong>Auditoria</strong>: logging de prompts, fontes, chamadas a ferramentas, tempos, erros e versões de modelo.</li>
+    </ol>
+  </div>
+
+  <p style="margin:0 0 12px 0;">O benefício de executar isto num nó “deskside” potente é a <strong>latência baixa</strong> e a <strong>soberania de dados</strong>.
+O benefício de ter “tool-use” é transformar respostas em <strong>acções controladas</strong>.
+E o benefício de DSA/contexto longo é reduzir o risco de respostas fora de contexto quando os documentos crescem.
+  </p>
+
+  <h3 style="color:#ffcc66 !important;margin:18px 0 6px 0;text-align:left;">
+    <span style="color:#ffcc66 !important;">6) Notas práticas: quantização, throughput e desenho de serviços</span>
+  </h3>
+
+  <ul style="margin:0 0 12px 22px;">
+    <li><strong>Quantização</strong>: em produção, quase sempre compensa usar quantização (quando compatível) para ganhar throughput e reduzir pegada, mantendo qualidade aceitável.</li>
+    <li><strong>Separação de serviços</strong>: mesmo num nó único, isola “API gateway”, “RAG service”, “model server” e “tools service” para observabilidade e controlo de falhas.</li>
+    <li><strong>Cache e warmup</strong>: caches de embeddings e de re-ranking (por colecção) reduzem custos e melhoram previsibilidade.</li>
+    <li><strong>Políticas</strong>: define claramente o que o agente pode fazer. “Tool-use” sem guarda é automação cega; com guarda, é produtividade.</li>
+  </ul>
+
+  <h3 style="color:#ffcc66 !important;margin:18px 0 6px 0;text-align:left;">
+    <span style="color:#ffcc66 !important;">Epílogo: 2026 é o ano em que a IA volta a ser infra-estrutura</span>
+  </h3>
+
+  <p style="margin:0 0 12px 0;">A DGX Station representa uma ideia antiga com roupa nova: <strong>computação perto dos dados</strong>.
+O DeepSeek V3.2 representa uma ideia moderna com músculo: <strong>modelos que raciocinam enquanto operam ferramentas</strong>.
+Juntos, dão forma a uma arquitectura onde a IA não é um espectáculo distante — é um sistema local, governado, auditável e útil.
+  </p>
+
+  <!-- Referências internacionais -->
+  <div style="margin-top:16px;padding-top:10px;border-top:1px solid #222;">
+    <div style="color:#ffcc66 !important;font-weight:bold;">Referências (fontes)</div>
+    <ul style="margin:8px 0 0 18px;padding:0;">
+      <li>NVIDIA — DGX Station (página oficial): https://www.nvidia.com/en-eu/products/workstations/dgx-station/</li>
+      <li>NVIDIA Newsroom (18 Maio 2025) — DGX Station: GB300, 20 PFLOPS, 784GB, ConnectX-8 800Gb/s: https://nvidianews.nvidia.com/news/nvidia-launches-ai-first-dgx-personal-computing-systems-with-global-computer-makers</li>
+      <li>DeepSeek — V3.2 Release (01 Dez 2025): https://api-docs.deepseek.com/news/news251201</li>
+      <li>DeepSeek — Introducing V3.2-Exp (29 Set 2025): https://api-docs.deepseek.com/news/news250929</li>
+      <li>Reuters (29 Set 2025) — V3.2-Exp, DSA, “intermediate step”: https://www.reuters.com/technology/deepseek-releases-model-it-calls-intermediate-step-towards-next-generation-2025-09-29/</li>
+    </ul>
+  </div>
+
+  <!-- Assinatura -->
+  <div style="border-top:1px solid #ffcc78;margin-top:18px;padding-top:10px;color:#ffcca0;">
+    <strong>Francisco Gonçalves</strong><br>
+    <span style="opacity:.95;">Fragmentos do Caos • FC-Chronic-News</span><br>
+    <span style="opacity:.85;">Co-autoria editorial: Augustus</span>
+  </div>
+
+  [backsites]
+</div>
+
+<p>[fc<em>footer</em>mini]</p>
+
+</body>
+</html>
