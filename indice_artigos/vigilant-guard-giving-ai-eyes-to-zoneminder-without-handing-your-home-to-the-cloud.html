@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Vigilant Guard: Giving AI Eyes to ZoneMinder Without Handing Your Home to the Cloud</title>
+    
+<style>
+body {
+    font-family: Arial, sans-serif;
+    padding: 1rem;
+    background-color: #fff;
+    color: #000;
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 2rem;
+    text-decoration: none;
+    color: #003366; /* azul escuro */
+    z-index: 1000;
+    background: none;
+    border: none;
+}
+
+@media (max-width: 768px) {
+    .close-button {
+        font-size: 2.5rem;
+    }
+}
+</style>
+
+</head>
+<body>
+
+    <a href="index.html" class="close-button" title="Voltar">✕</a>
+    <h1>Vigilant Guard: Giving AI Eyes to ZoneMinder Without Handing Your Home to the Cloud</h1>
+    <div class="meta">
+        <p><strong>📅 2026-05-29</strong></p>
+        <p><a href="https://fasgoncalves.github.io/fragmentoscaos-html/2026/05/vigilant-guard-giving-ai-eyes-to-zoneminder-without-handing-your-home-to-the-cloud.html" target="_blank">🔗 Ver artigo original</a></p>
+    </div>
+
+<ul>
+<li>1 root www-data ... /tmp/humans_socket</li>
+</ul>
+
+</pre>
+
+<p>
+
+<p>This small detail is the kind of thing that separates a system that is “almost working” from one that is truly operational. Computing, like life itself, is often lost at a door closed by permissions.</p>
+
+</p>
+
+<h3 style="color:#ffcc66 !important; text-align:left;">
+
+<p><span style="color:#ffcc66 !important;">4. Human detection with YOLOv8</span></p>
+
+</h3>
+
+<p>
+
+<p>The main detection engine is <strong>YOLOv8</strong>, using the lightweight <code>yolov8n.pt</code> model. This choice was deliberate: the system runs on a virtual machine without a dedicated GPU, so the solution had to work on CPU.</p>
+
+</p>
+
+<p>
+
+<p>A typical configuration is:</p>
+
+</p>
+
+<pre style="background:#050505; color:#d8f3dc; border:1px solid #333; padding:16px; overflow:auto; border-radius:8px;">
+
+<p>HUMANS<em>YOLO</em>MODEL=/opt/VigilantGuard/models/yolov8n.pt
+HUMANS<em>MAX</em>EVENT<em>FRAMES=4
+HUMANS</em>MAX<em>IMAGE</em>WIDTH=960
+HUMANS<em>PERSON</em>CONF=0.35
+HUMANS<em>MIN</em>PERSON<em>AREA</em>RATIO=0.003</p>
+
+</pre>
+
+<p>
+
+<p>The <code>HUMANS<em>PERSON</em>CONF</code> parameter controls the minimum confidence required from the model. Lower values increase sensitivity, but may also increase false positives. Higher values reduce noise, but may miss people in dark, partial or distant images.</p>
+
+</p>
+
+<p>
+
+<p>The goal is to find a balance: detect well enough without turning every shadow into a domestic emergency.</p>
+
+</p>
+
+<h3 style="color:#ffcc66 !important; text-align:left;">
+
+<p><span style="color:#ffcc66 !important;">5. Why analyse alarm.jpg and snapshot.jpg</span></p>
+
+</h3>
+
+<p>
+
+<p>Within a ZoneMinder event, not all images have the same value. Some may be empty, delayed or captured before the person is clearly visible. For that reason, Vigilant Guard gives priority to two essential images:</p>
+
+</p>
+
+<ul style="margin-left:20px;">
+
+<p><li><code>alarm.jpg</code> — usually the image associated with the alarm moment.</li>
+  <li><code>snapshot.jpg</code> — the event reference image.</li></p>
+
+</ul>
+
+<p>
+
+<p>The logic was adjusted to ensure that both images are analysed whenever they exist. Only afterwards are additional event images selected across the sequence.</p>
+
+</p>
+
+<p>
+
+<p>This improves the probability of detecting a person, especially when the person passes quickly in front of the camera.</p>
+
+</p>
+
+<h3 style="color:#ffcc66 !important; text-align:left;">
+
+<p><span style="color:#ffcc66 !important;">6. Optional facial recognition</span></p>
+
+</h3>
+
+<p>
+
+<p>After detecting a person, the system can attempt to identify the face using the <code>face_recognition</code> library, comparing facial encodings with a MySQL or MariaDB database.</p>
+
+</p>
+
+<p>
+
+<p>The table may have a simple structure:</p>
+
+</p>
+
+<pre style="background:#050505; color:#d8f3dc; border:1px solid #333; padding:16px; overflow:auto; border-radius:8px;">
+
+<p>CREATE TABLE faces (
+    id INT AUTO<em>INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    encoding MEDIUMTEXT NOT NULL,
+    created</em>at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);</p>
+
+</pre>
+
+<p>
+
+<p>Facial recognition is, however, optional. The solution remains useful without it: it detects humans, crops the figure and sends an alert. Named identification only happens when there is a visible face, with sufficient quality, previously registered in the database.</p>
+
+</p>
+
+<p>
+
+<p>In practice, YOLO answers the question: <strong>“Is there a person?”</strong>. Facial recognition then tries to answer the next question: <strong>“Who is it?”</strong>.</p>
+
+</p>
+
+<h3 style="color:#ffcc66 !important; text-align:left;">
+
+<p><span style="color:#ffcc66 !important;">7. Alerts via ntfy</span></p>
+
+</h3>
+
+<p>
+
+<p>Alerts are sent through <strong>ntfy</strong>, a simple and lightweight solution particularly well suited for notifications in self-hosted systems.</p>
+
+</p>
+
+<p>
+
+<p>A typical message may indicate:</p>
+
+</p>
+
+<pre style="background:#050505; color:#d8f3dc; border:1px solid #333; padding:16px; overflow:auto; border-radius:8px;">
+
+<p>👤 Human figure detected — http://server/uploads/human<em>20260529</em>xxxxx.jpg</p>
+
+</pre>
+
+<p>
+
+<p>Or, when a face is recognised:</p>
+
+</p>
+
+<pre style="background:#050505; color:#d8f3dc; border:1px solid #333; padding:16px; overflow:auto; border-radius:8px;">
+
+<p>🧑 Face identified: Name — http://server/uploads/face<em>name</em>xxxxx.jpg</p>
+
+</pre>
+
+<p>
+
+<p>The result is a very practical surveillance chain: the camera sees, ZoneMinder creates an event, Vigilant Guard confirms whether there is a human, and the mobile phone receives only what matters.</p>
+
+</p>
+
+<h3 style="color:#ffcc66 !important; text-align:left;">
+
+<p><span style="color:#ffcc66 !important;">8. systemd service: turning a script into a sentry</span></p>
+
+</h3>
+
+<p>
+
+<p>To run continuously, Vigilant Guard operates as a <code>systemd</code> service:</p>
+
+</p>
+
+<pre style="background:#050505; color:#d8f3dc; border:1px solid #333; padding:16px; overflow:auto; border-radius:8px;">
+
+<p>sudo systemctl status Vigilant-Guard.service
+sudo journalctl -u Vigilant-Guard.service -f</p>
+
+</pre>
+
+<p>
+
+<p>The service creates the socket, loads known faces, initialises the YOLO model and waits for event paths sent by the ZoneMinder script.</p>
+
+</p>
+
+<p>
+
+<p>Using <code>systemd</code> allows automatic restart, CPU limits, lower scheduling priority and clean integration into the system boot process.</p>
+
+</p>
+
+<h3 style="color:#ffcc66 !important; text-align:left;">
+
+<p><span style="color:#ffcc66 !important;">9. Limits and tuning</span></p>
+
+</h3>
+
+<p>
+
+<p>Vigilant Guard does not solve every video surveillance problem by itself. If ZoneMinder does not create an event, Vigilant Guard will not be called. The first link in the chain remains the configuration of zones, sensitivity, minimum area and motion criteria inside ZoneMinder itself.</p>
+
+</p>
+
+<p>
+
+<p>Tuning happens at two levels:</p>
+
+</p>
+
+<ul style="margin-left:20px;">
+
+<p><li><strong>In ZoneMinder:</strong> detection zones, sensitivity, ignored areas, minimum alarm frame count.</li>
+  <li><strong>In Vigilant Guard:</strong> YOLO confidence, minimum person area, number of images analysed per event, maximum image width.</li></p>
+
+</ul>
+
+<p>
+
+<p>If the system detects too many people — for instance, pedestrians in the street — the first solution should be to adjust the zones in ZoneMinder. It is better to prevent an unwanted event from being created than to ask AI to compensate for poor surveillance geometry.</p>
+
+</p>
+
+<h3 style="color:#ffcc66 !important; text-align:left;">
+
+<p><span style="color:#ffcc66 !important;">10. A local, simple and publishable project</span></p>
+
+</h3>
+
+<p>
+
+<p>Vigilant Guard was born from a concrete need, but it has the potential to be useful to other ZoneMinder users. Many people want to add human detection to their cameras, but do not want to depend on closed platforms, subscriptions, mandatory cloud services or commercial black boxes.</p>
+
+</p>
+
+<p>
+
+<p>This solution follows a different philosophy: local software, explicit configuration, readable logs, simple integration and full control by the user.</p>
+
+</p>
+
+<p>
+
+<p>It does not aim to be a universal intelligent surveillance platform. It aims to be a clear, small and effective tool: receive events, analyse images, detect humans and send alerts.</p>
+
+</p>
+
+<h3 style="color:#ffcc66 !important; text-align:left;">
+
+<p><span style="color:#ffcc66 !important;">Conclusion: a digital watchman with new eyes</span></p>
+
+</h3>
+
+<p>
+
+<p>Vigilant Guard represents a pragmatic way of adding artificial intelligence to ZoneMinder without dismantling the existing architecture. Instead of replacing the video surveillance system, it adds a layer of interpretation.</p>
+
+</p>
+
+<p>
+
+<p>The result is a more attentive digital watchman: it does not merely see movement, but tries to understand whether that movement corresponds to a person.</p>
+
+</p>
+
+<p>
+
+<p>And perhaps that is the best definition of this small solution: a <strong>wide-awake night watchman</strong>, powered by Python, YOLO, UNIX sockets and a certain amount of technical stubbornness. The good kind of stubbornness — the artisanal kind that turns small problems into useful systems.</p>
+
+</p>
+
+<div style="border-top:1px solid #ffcc78; margin-top:32px; padding-top:18px; color:#ffcca0;">
+
+<p><p><strong>Author:</strong> <a href="https://fasgoncalves.github.io/fragmentoscaos-html/sobre-francisco-goncalves.html" style="color:#ffcc66 !important; text-decoration:none;">Francisco Gonçalves</a></p>
+  Technical and editorial co-authorship:<strong> Augustus Veritas.</strong></p>
+  <p style="font-size:0.95em; color:#cfcfcf;">Technical article published within the experimental technology, open software, local artificial intelligence and independent infrastructure projects of Fragmentos do Caos.</p>
+</div></p>
+
+<p>[backsites]
+</div></p>
+
+<p>[fc<em>footer</em>mini]</p>
+
+</body>
+</html>
