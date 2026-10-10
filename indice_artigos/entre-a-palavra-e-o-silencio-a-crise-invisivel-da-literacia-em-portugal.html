@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Entre a Palavra e o Silêncio: A Crise Invisível da Literacia em Portugal</title>
+    
+<style>
+body {
+    font-family: Arial, sans-serif;
+    padding: 1rem;
+    background-color: #fff;
+    color: #000;
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 2rem;
+    text-decoration: none;
+    color: #003366; /* azul escuro */
+    z-index: 1000;
+    background: none;
+    border: none;
+}
+
+@media (max-width: 768px) {
+    .close-button {
+        font-size: 2.5rem;
+    }
+}
+</style>
+
+</head>
+<body>
+
+    <a href="index.html" class="close-button" title="Voltar">✕</a>
+    <h1>Entre a Palavra e o Silêncio: A Crise Invisível da Literacia em Portugal</h1>
+    <div class="meta">
+        <p><strong>📅 2025-11-02</strong></p>
+        <p><a href="https://fasgoncalves.github.io/fragmentoscaos-html/2025/11/entre-a-palavra-e-o-silencio-a-crise-invisivel-da-literacia-em-portugal.html" target="_blank">🔗 Ver artigo original</a></p>
+    </div>
+
+<p><img src="https://fasgoncalves.github.io/indice.fragmentoscaos/images/entre-a-palavra-e-o-silencio-a-crise-invisivel-da-literacia-em-portugal.png" alt="Miniatura do artigo" /></p>
+
+<article style="background-color:#000000 !important;color:#e8eef4 !important;padding:25px;font-family:'Georgia',serif;line-height:1.6;">
+
+<h1 style="color:#ffcc66 !important;text-align:center;">📚 A Literacia em Portugal no Século XXI: Um Retrato Incompleto</h1>
+
+<div style="border:1px solid #ffcc66 !important;padding:10px;background:#111;">
+<h3 style="color:#ffcc66 !important;">🟨 Box de Factos</h3>
+<ul>
+<li>📖 <strong>Literacia média dos adultos portugueses:</strong> 235 pontos (média OCDE: 260)</li>
+<li>🔢 <strong>Numeracia:</strong> 238 pontos (média OCDE: 263)</li>
+<li>🧩 <strong>Resolução de problemas:</strong> 233 pontos (média OCDE: 257)</li>
+<li>⚠️ <strong>42% dos adultos em Portugal</strong> estão no Nível 1 ou abaixo em literacia (OCDE: 26%)</li>
+<li>💻 <strong>Literacia digital:</strong> 30% acima do básico, 26% básico, 27% abaixo, 14% fora da internet</li>
+<li>🌍 <strong>Analfabetismo:</strong> 3,0% da população com ≥10 anos (INE 2024)</li>
+</ul>
+</div>
+
+<!-- === BLOCO 1: Literacia / Numeracia / Problemas === -->
+<section style="margin-top:25px;margin-bottom:30px;">
+<h3 style="color:#ffcc66 !important;">📊 Visualização Interactiva da Literacia em Portugal</h3>
+
+<div style="background:#111;padding:15px;border-radius:10px;">
+<canvas id="grafico-literacia" width="400" height="250"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const ctx = document.getElementById('grafico-literacia');
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['Literacia', 'Numeracia', 'Resolução de Problemas'],
+    datasets: [
+      { label: 'Portugal', data: [235, 238, 233],
+        backgroundColor: 'rgba(255,204,102,0.8)',
+        borderColor: '#ffcc66', borderWidth: 1 },
+      { label: 'Média OCDE', data: [260, 263, 257],
+        backgroundColor: 'rgba(100,149,237,0.7)',
+        borderColor: '#6495ed', borderWidth: 1 }
+    ]
+  },
+  options: {
+    plugins:{legend:{labels:{color:'#e8eef4'}}},
+    scales: {
+      x:{ticks:{color:'#e8eef4'},grid:{color:'#333'}},
+      y:{beginAtZero:false,ticks:{color:'#e8eef4'},grid:{color:'#333'}}
+    }
+  }
+});
+</script>
+<p style="font-size:0.9em;color:#999;margin-top:5px;">Fonte: OCDE-PIAAC 2023</p>
+</div>
+
+<!-- Mini-mapa Regional SVG -->
+<h4 style="color:#ffcc66 !important;margin-top:25px;">🗺️ Distribuição Regional da Literacia</h4>
+<div style="text-align:center;background:#111;padding:10px;border-radius:10px;">
+<svg width="280" height="220" viewBox="0 0 220 200">
+  <rect x="30" y="20" width="60" height="40" fill="#6495ed"/>
+  <rect x="110" y="30" width="60" height="40" fill="#ffd966"/>
+  <rect x="70" y="90" width="70" height="40" fill="#ffcc66"/>
+  <rect x="60" y="150" width="80" height="40" fill="#ff9966"/>
+  <text x="50" y="45" fill="#000">Norte</text>
+  <text x="125" y="55" fill="#000">Centro</text>
+  <text x="90" y="115" fill="#000">Lisboa</text>
+  <text x="80" y="175" fill="#000">Alentejo/Algarve</text>
+</svg>
+<p style="font-size:0.9em;color:#999;margin-top:5px;">Cores frias = maior literacia | Cores quentes = menor literacia</p>
+</div>
+</section>
+
+<h2 style="color:#ffcc66 !important;">I. O Retrato Actual</h2>
+<p>Portugal, em 2025, é um país alfabetizado — mas ainda não verdadeiramente leitor. O último relatório da OCDE (PIAAC 2023) colocou o país num patamar modesto: uma literacia média de 235 pontos, bem abaixo da média da OCDE (260). Quase metade dos adultos portugueses tem dificuldades sérias em compreender textos, interpretar dados e resolver problemas simples do quotidiano.</p>
+
+<p>Esta realidade é confirmada pelo INE: o analfabetismo caiu para cerca de 3%, mas as diferenças regionais persistem. As áreas urbanas — Lisboa, Porto, litoral centro — aproximam-se da média europeia, enquanto o interior centro, o Alentejo e o Algarve interior continuam a carregar o peso do atraso estrutural.</p>
+
+<h2 style="color:#ffcc66 !important;">II. A Geografia da Literacia</h2>
+<p>Os números são frios, mas o mapa é eloquente. O Norte e Lisboa registam melhorias, o Centro e o Sul continuam mais frágeis. Nos concelhos envelhecidos do interior, há ainda 4 a 5% de população analfabeta, sobretudo mulheres com mais de 70 anos. São ecos de uma geração que foi deixada para trás.</p>
+
+<p>Já a literacia digital mostra-se mais promissora: metade dos portugueses entre 16 e 74 anos têm competências digitais de nível básico ou superior. Ainda assim, cerca de 14% permanecem fora da Internet, e nas zonas rurais a diferença é gritante — 63,9% com literacia digital “acima do básico” nas cidades, contra 43,7% nos campos.</p>
+
+<!-- === BLOCO 2: Literacia Digital === -->
+<section style="margin-top:30px;margin-bottom:40px;">
+<h3 style="color:#ffcc66 !important;">💻 Literacia Digital: Portugal vs União Europeia</h3>
+
+<div style="background:#111;padding:15px;border-radius:10px;">
+<canvas id="grafico-digital" width="400" height="250"></canvas>
+<script>
+const ctx2 = document.getElementById('grafico-digital');
+new Chart(ctx2, {
+  type: 'bar',
+  data: {
+    labels: ['Abaixo do Básico', 'Nível Básico', 'Acima do Básico', 'Sem Internet'],
+    datasets: [
+      { label: 'Portugal (2023)', data: [27, 26, 30, 14],
+        backgroundColor: 'rgba(255,204,102,0.8)',
+        borderColor: '#ffcc66', borderWidth: 1 },
+      { label: 'Média UE (2023)', data: [18, 28, 27, 7],
+        backgroundColor: 'rgba(100,149,237,0.7)',
+        borderColor: '#6495ed', borderWidth: 1 }
+    ]
+  },
+  options: {
+    plugins:{legend:{labels:{color:'#e8eef4'}}},
+    scales: {
+      x:{ticks:{color:'#e8eef4'},grid:{color:'#333'}},
+      y:{beginAtZero:true,max:40,ticks:{color:'#e8eef4'},grid:{color:'#333'}}
+    }
+  }
+});
+</script>
+<p style="font-size:0.9em;color:#999;margin-top:5px;">Fonte: Comissão Europeia – DESI 2024</p>
+</div>
+
+<p style="margin-top:15px;">
+Em literacia digital, Portugal mostra progresso mas ainda tropeça: 30% dos cidadãos com competências acima do básico,
+contra 27% na média da União Europeia — uma ligeira vantagem aparente, que esconde um défice de equidade.  
+Nas zonas urbanas, 64% têm competências digitais adequadas; nas rurais, apenas 44%.  
+E 14% dos portugueses continuam fora da Internet — um silêncio digital que pesa mais do que mil cliques.
+</p>
+</section>
+
+<!-- === BLOCO 3: Radar Global === -->
+<section style="margin-top:30px;margin-bottom:50px;">
+<h3 style="color:#ffcc66 !important;">🌍 Índice Global de Literacia — Portugal e o Sul da Europa</h3>
+
+<div style="background:#111;padding:15px;border-radius:10px;">
+<canvas id="grafico-global" width="450" height="260"></canvas>
+<script>
+const ctx3 = document.getElementById('grafico-global');
+new Chart(ctx3, {
+  type: 'radar',
+  data: {
+    labels: ['Literacia Tradicional', 'Numeracia', 'Resolução de Problemas', 'Literacia Digital'],
+    datasets: [
+      { label: 'Portugal', data: [235, 238, 233, 56],
+        backgroundColor: 'rgba(255,204,102,0.3)', borderColor: '#ffcc66',
+        borderWidth: 2, pointBackgroundColor:'#ffcc66' },
+      { label: 'Espanha', data: [247, 250, 244, 61],
+        backgroundColor: 'rgba(100,149,237,0.3)', borderColor: '#6495ed',
+        borderWidth: 2, pointBackgroundColor:'#6495ed' },
+      { label: 'Itália', data: [240, 241, 238, 54],
+        backgroundColor: 'rgba(255,153,102,0.3)', borderColor: '#ff9966',
+        borderWidth: 2, pointBackgroundColor:'#ff9966' },
+      { label: 'Grécia', data: [244, 246, 241, 57],
+        backgroundColor: 'rgba(102,204,153,0.3)', borderColor: '#66cc99',
+        borderWidth: 2, pointBackgroundColor:'#66cc99' },
+      { label: 'Média UE', data: [260, 263, 257, 59],
+        backgroundColor: 'rgba(173,216,230,0.3)', borderColor: '#87ceeb',
+        borderWidth: 2, pointBackgroundColor:'#87ceeb' }
+    ]
+  },
+  options: {
+    scales: {
+      r: {
+        min: 200, max: 270,
+        ticks: { color:'#e8eef4', stepSize:10 },
+        pointLabels: { color:'#e8eef4' },
+        grid: { color:'#333' },
+        angleLines: { color:'#333' }
+      }
+    },
+    plugins:{legend:{labels:{color:'#e8eef4'}}}
+  }
+});
+</script>
+<p style="font-size:0.9em;color:#999;margin-top:5px;">Fontes: OCDE-PIAAC 2023 · DESI 2024 · Comissão Europeia</p>
+</div>
+
+<p style="margin-top:15px;">
+Este radar revela a paisagem das competências do sul da Europa:  
+Portugal e Itália quase gémeos nas fragilidades; Espanha e Grécia ligeiramente acima;  
+e a União Europeia, lá em cima, ainda distante.  
+A leitura deste gráfico é clara: <strong>a literacia não é só educação — é soberania cognitiva.</strong>  
+Quem domina o código da informação, domina o futuro.
+</p>
+</section>
+
+<h2 style="color:#ffcc66 !important;">VI. Conclusão</h2>
+<p>Portugal é um país que aprendeu a ler, mas ainda não a compreender plenamente.  
+Entre a alfabetização estatística e a literacia crítica vai um abismo de pensamento.  
+Mas há uma chama que se reacende: as novas gerações, mais instruídas, mais digitais, mais conscientes, podem fazer da leitura e do saber não apenas um hábito, mas uma forma de libertação.</p>
+
+<p>Que cada byte de informação se transforme em consciência, e cada leitura em poder cívico.  
+Porque o verdadeiro progresso começa quando um povo aprende a decifrar o mundo — e a si mesmo.</p>
+
+<hr style="border:0;border-top:1px solid #ffcc66 !important;margin-top:30px;margin-bottom:10px;">
+
+<h3 style="color:#ffcc66 !important;">📚 Fontes e Referências</h3>
+<ul>
+<li><a href="https://pessoas2030.gov.pt/2024/12/17/relatorio-global-da-ocde-sobre-as-competencias-dos-adultos/" style="color:#ffcc66 !important;" target="_blank">Relatório Global da OCDE – PIAAC 2023</a></li>
+<li><a href="https://correiodominho.pt/cronicas/os-baixos-niveis-de-literacia-e-numeracia-em-portugal/16638" style="color:#ffcc66 !important;" target="_blank">Correio do Minho – Baixos Níveis de Literacia</a></li>
+<li><a href="https://doutorfinancas.pt/literacia-financeira/literacia-em-portugal-qual-o-retrato-do-pais/" style="color:#ffcc66 !important;" target="_blank">Doutor Finanças – Literacia em Portugal</a></li>
+<li><a href="https://ine.pt" style="color:#ffcc66 !important;" target="_blank">Instituto Nacional de Estatística (INE 2024) – Censos e Indicadores Regionais</a></li>
+<li><a href="https://pordata.pt" style="color:#ffcc66 !important;" target="_blank">PORDATA – Indicadores Sociais e Educativos</a></li>
+</ul>
+
+<p style="text-align:center;margin-top:20px;color:#666;">© Fragmentos do Caos — Série <em>Contra o Teatro da Mediocridade</em><br>Com Augustus Veritas Lumen</p>
+<div style="background-color:#111; border:1px solid #444; border-radius:10px; padding:18px; margin-top:35px;">
+  <h2 style="color:#ffcc66 !important; text-align:center; margin-top:0;">
+    📖 Leitura Aconselhada
+  </h2>
+  <p style="text-align:center; font-style:italic; margin-bottom:10px;">
+    A cidadãos que se querem livres.
+  </p>
+  <div style="text-align:center; margin-top:10px;">
+    <a href="https://fasgoncalves.github.io/hugo.fragmentoscaos/livros/fragmentos-do-codigo-dos-mortos/"
+       style="display:inline-block; background-color:#ffcc66; color:#000 !important; text-decoration:none; 
+              font-weight:bold; padding:10px 20px; border-radius:10px;">
+      🜂 Livro 'Fragmentos do Código dos Mortos'
+    </a>
+  </div>
+<p></p>
+<p style="color:#ffaaa0;">
+📜 Excerto
+“Não fomos programados para mudar. Apenas para repetir. Sobreviver. Como os nossos pais, e os pais deles antes.”
+</p
+[leia]
+</article>
+
+<p>[fc<em>footer</em>mini]</p>
+
+</body>
+</html>

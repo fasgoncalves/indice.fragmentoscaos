@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Um pouco de História da Computação : Do ICL 1500 ao DRS 20: Bastidores de um Monitor de Comandos (Feltham, 1981)</title>
+    
+<style>
+body {
+    font-family: Arial, sans-serif;
+    padding: 1rem;
+    background-color: #fff;
+    color: #000;
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 2rem;
+    text-decoration: none;
+    color: #003366; /* azul escuro */
+    z-index: 1000;
+    background: none;
+    border: none;
+}
+
+@media (max-width: 768px) {
+    .close-button {
+        font-size: 2.5rem;
+    }
+}
+</style>
+
+</head>
+<body>
+
+    <a href="index.html" class="close-button" title="Voltar">✕</a>
+    <h1>Um pouco de História da Computação : Do ICL 1500 ao DRS 20: Bastidores de um Monitor de Comandos (Feltham, 1981)</h1>
+    <div class="meta">
+        <p><strong>📅 2025-09-12</strong></p>
+        <p><a href="https://fasgoncalves.github.io/fragmentoscaos-html/2025/09/um-pouco-de-historia-da-computacao-do-icl-1500-ao-drs-20-bastidores-de-um-monitor-de-comandos-feltham-1981.html" target="_blank">🔗 Ver artigo original</a></p>
+    </div>
+
+<p><img src="https://fasgoncalves.github.io/indice.fragmentoscaos/images/um-pouco-de-historia-da-computacao-do-icl-1500-ao-drs-20-bastidores-de-um-monitor-de-comandos-feltham-1981.png" alt="Miniatura do artigo" /></p>
+
+<!-- wp:heading {"level":5} -->
+
+<h5 class="wp-block-heading"><em>Uma memória técnica pessoal sobre a transição de aplicações de gestão do ICL 1500 para o DRS 20 — e como um pequeno CLI em BASIC ajudou a atravessar a ponte.</em></h5>
+
+<!-- /wp:heading -->
+
+<!-- wp:heading {"level":1} -->
+
+<h1 class="wp-block-heading">Do ICL 1500 ao DRS 20: Bastidores de um Monitor de comandos (Feltham, 1981)</h1>
+
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+
+<p><em>Uma memória técnica pessoal sobre a transição de aplicações de gestão do ICL 1500 para o DRS 20 — e como um pequeno CLI em BASIC ajudou a atravessar a ponte.</em></p>
+
+<!-- /wp:paragraph -->
+
+<p><!-- wp:separator -->
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+<!-- /wp:separator --></p>
+
+<p><!-- wp:heading --></p>
+
+<h2 class="wp-block-heading">Introdução </h2>
+
+<p><!-- /wp:heading --></p>
+
+<p><!-- wp:paragraph --></p>
+
+<p>Em <strong>1981</strong>, em <strong>Feltham (Reino Unido)</strong>, fui destacado para validar, num ambiente <strong>ICL 1500 com disco</strong>, as aplicações que eu próprio tinha desenvolvido em Portugal — <strong>Faturação, Stocks, Contas‑correntes e Contabilidade POC</strong> — com vista à sua migração para o <strong>DRS 20</strong>. O novo sistema arrancou em <strong>modo "retained"</strong>, emulando o interface do ICL 1500, e rapidamente senti falta de uma ferramenta mais direta para acelerar testes e operações. A resposta foi construir, em <strong>BASIC comercial</strong>, um <strong>monitor de comandos</strong> (<em>CLI, command line interpreter & executor</em>). Um ano depois, já com o DRS 20 em <strong>modo nativo</strong>, encontrei um monitor de comandos integrado cuja sintaxe era, para minha surpresa, <strong>praticamente idêntica</strong> à que tinha concebido.</p>
+
+<p><!-- /wp:paragraph --></p>
+
+</p>
+
+<!-- wp:quote -->
+<blockquote class="wp-block-quote"><!-- wp:paragraph -->
+
+<p>Este texto é um registo histórico pessoal. Não procura reconhecimento formal; quer apenas fixar o contexto, as escolhas técnicas e as lições aprendidas.</p>
+
+<p><!-- /wp:paragraph --></blockquote>
+<!-- /wp:quote --></p>
+
+<p><!-- wp:separator -->
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+<!-- /wp:separator --></p>
+
+<p><!-- wp:heading --></p>
+
+<h2 class="wp-block-heading">1) Contexto e objetivos</h2>
+
+<p><!-- /wp:heading --></p>
+
+<p><!-- wp:list --></p>
+
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li><strong>Local & data:</strong> Feltham, UK — July <strong>1981</strong>-1982</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Missão:</strong> validar e preparar a passagem de aplicações de gestão do <strong>ICL 1500</strong> para o <strong>DRS 20</strong>.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Aplicações em causa:</strong> Faturação, Stocks, Contas‑correntes, Contabilidade <strong>POC</strong>.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Meta imediata:</strong> assegurar compatibilidade funcional e operacional, reduzir riscos de migração e ganhar velocidade nos ensaios.</li>
+<!-- /wp:list-item --></ul>
+
+<p><!-- /wp:list --></p>
+
+<p><!-- wp:image {"id":1239,"sizeSlug":"full","linkDestination":"none"} --></p>
+
+<figure class="wp-block-image size-full"><img src="http://www.fragmentoscaos.eu/wp-content/uploads/2025/03/1000007729.jpg" alt="" class="wp-image-1239"/></figure>
+
+<p><!-- /wp:image --></p>
+
+<p><!-- wp:heading --></p>
+
+<h2 class="wp-block-heading">2) O desafio do <em>retained mode</em></h2>
+
+<p><!-- /wp:heading --></p>
+
+<p><!-- wp:paragraph --></p>
+
+<p>O arranque do DRS 20 em <strong>retained mode</strong> significava <strong>emular o interface do ICL 1500</strong>. Funcionava, mas trazia fricções: comandos menos diretos, ciclos de teste lentos e uma sensação de estar a trabalhar por camadas. Para validar com rigor (e sem desperdiçar tempo), era preciso uma ferramenta <strong>scriptável</strong>, <strong>repetível</strong> e <strong>transparente</strong>.</p>
+
+<p><!-- /wp:paragraph --></p>
+
+<p><!-- wp:heading --></p>
+
+<h2 class="wp-block-heading">3) Porque um CLI?</h2>
+
+<p><!-- /wp:heading --></p>
+
+<p><!-- wp:paragraph --></p>
+
+<p>Um <strong>CLI</strong> oferece três vantagens decisivas em contextos de migração e testes:</p>
+
+<p><!-- /wp:paragraph --></p>
+
+<p><!-- wp:list {"ordered":true} --></p>
+
+<ol class="wp-block-list"><!-- wp:list-item -->
+<li><strong>Automação</strong> — repetir cenários sem esforço, com logs claros.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Precisão</strong> — cada comando é explícito; fácil detetar diferenças entre execuções.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Velocidade</strong> — menos navegação por menus, mais foco na tarefa.</li>
+<!-- /wp:list-item --></ol>
+
+<p><!-- /wp:list --></p>
+
+<p><!-- wp:heading --></p>
+
+<h2 class="wp-block-heading">4) Construção em BASIC comercial</h2>
+
+<p><!-- /wp:heading --></p>
+
+<p><!-- wp:paragraph --></p>
+
+<p>Escolhi <strong>BASIC comercial</strong> por estar disponível no ambiente e permitir resultados rápidos. A arquitetura foi deliberadamente simples:</p>
+
+<p><!-- /wp:paragraph --></p>
+
+<p><!-- wp:list --></p>
+
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li><strong>Laço principal</strong> a ler uma linha de comando e a despachar para uma <strong>tabela de verbos</strong>.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Parser enxuto</strong>, baseado em <em>tokens</em> separados por espaços e vírgulas.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Abstração de canais/dispositivos</strong> (e.g., <code>#1</code>, <code>#2</code>) típica do ecossistema, para uniformizar acessos a ficheiros/unidades.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Tratamento de erros</strong> com mensagens curtas e inequívocas (sem códigos obscuros).</li>
+<!-- /wp:list-item --></ul>
+
+<p><!-- /wp:list --></p>
+
+<p><!-- wp:heading --></p>
+
+<h2 class="wp-block-heading">5) Gramática de comandos (exemplos)</h2>
+
+<p><!-- /wp:heading --></p>
+
+<p><!-- wp:paragraph --></p>
+
+<p>A sintaxe seguia o padrão <strong>VERBO argumentos</strong>. Alguns exemplos da época:</p>
+
+<p><!-- /wp:paragraph --></p>
+
+<p><!-- wp:code --></p>
+
+<pre class="wp-block-code"><code>copy #1,filenameinput #2.filenameout
+rename #1.testeabc #1.testeum
+list  #2
+delete #2.filename
+run   #1faturacao.cbl
+
+Onde #x era o dispositivo de IO, diskete ou disco fixo.
+</code></pre>
+
+<p><!-- /wp:code --></p>
+
+<p><!-- wp:paragraph --></p>
+
+<p>Princípios de desenho:</p>
+
+<p><!-- /wp:paragraph --></p>
+
+<p><!-- wp:list --></p>
+
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li><strong>Minimalismo</strong> (o essencial primeiro, sem <em>switches</em> crípticos).</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Previsibilidade</strong> (mesma ordem de argumentos em todos os verbos que manipulavam ficheiros/dispositivos).</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Feedback claro</strong> (confirmações sucintas; erros com indicação do passo falhado).</li>
+<!-- /wp:list-item --></ul>
+
+<p><!-- /wp:list --></p>
+
+<p><!-- wp:heading --></p>
+
+<h2 class="wp-block-heading">6) Entrega e o que aconteceu depois</h2>
+
+<p><!-- /wp:heading --></p>
+
+<p><!-- wp:paragraph --></p>
+
+<p>Durante a missão, o meu chefe em UK, <strong>Terry Fuller</strong>, <strong>pediu o código</strong> do monitor de comandos — e assim foi. Pouco depois <strong>regressei a Portugal</strong> e deixei o projeto para trás. Cerca de <strong>um ano depois</strong>, com o <strong>lançamento do DRS 20 em modo nativo</strong>, deparei‑me com um <strong>monitor de comandos integrado</strong> no sistema cuja <strong>sintaxe e espírito</strong> eram uma <strong>cópia fiel</strong> do que eu implementara em Feltham. Foi uma surpresa, misto de orgulho e assombro.</p>
+
+<p><!-- /wp:paragraph --></p>
+
+<p><!-- wp:quote --></p>
+
+<blockquote class="wp-block-quote"><!-- wp:paragraph -->
+<p>Este relato não pretende julgar processos internos nem abrir discussões de propriedade intelectual; é apenas o registo honesto de uma sequência de factos vivida no terreno.</p>
+<!-- /wp:paragraph --></blockquote>
+
+<p><!-- /wp:quote --></p>
+
+<p><!-- wp:image {"id":11293,"sizeSlug":"full","linkDestination":"none"} --></p>
+
+<figure class="wp-block-image size-full"><img src="https://fasgoncalves.github.io/fragmentoscaos-html/wp-content/uploads/2025/09/1000032606.jpg.html" alt="" class="wp-image-11293"/></figure>
+
+<p><!-- /wp:image --></p>
+
+<p></p></p>
+
+<p><!-- wp:heading --></p>
+
+<h2 class="wp-block-heading">7) Lições aprendidas</h2>
+
+<p><!-- /wp:heading --></p>
+
+<p><!-- wp:list --></p>
+
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li><strong>Ferramentas nascem da necessidade</strong>: a melhor especificação é o problema real à frente dos olhos.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Em migrações, simplicidade é uma arma</strong>: comandos claros aceleram testes e reduzem ambiguidades.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Documentação é memória</strong>: <em>readme</em>s, exemplos e logs são ouro passado um ano.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Portabilidade mental</strong>: pensar em <strong>interfaces estáveis</strong> (ex.: <code>#1</code>, <code>#2</code>) ajuda a atravessar gerações de hardware.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Guardar provas de trabalho</strong>: <em>snippets</em>, datas e versões facilitam futuras reconstruções históricas.</li>
+<!-- /wp:list-item --></ul>
+
+<p><!-- /wp:list --></p>
+
+<p><!-- wp:heading --></p>
+
+<h2 class="wp-block-heading">8) Linha temporal (aproximada)</h2>
+
+<p><!-- /wp:heading --></p>
+
+<p><!-- wp:list --></p>
+
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li><strong>1981</strong> — Feltham: validação no DRS 20 em <em>retained mode</em>; desenvolvimento do CLI em BASIC; entrega do código a Terry Fuller.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>1982</strong> — Lançamento do <strong>DRS 20 em modo nativo</strong>; monitor de comandos integrado, com sintaxe praticamente idêntica.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Depois</strong> — O capítulo encerra‑se, mas as ideias (e a gramática) seguem viagem.</li>
+<!-- /wp:list-item --></ul>
+
+<p><!-- /wp:list --></p>
+
+<p><!-- wp:heading --></p>
+
+<h2 class="wp-block-heading">9) Glossário rápido</h2>
+
+<p><!-- /wp:heading --></p>
+
+<p><!-- wp:list --></p>
+
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li><strong>ICL 1500</strong> — Sistema onde corriam as aplicações originais (com disco).</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>DRS 20</strong> — Nova plataforma a lançar no mercado na época.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>POC</strong> — Plano Oficial de Contabilidade português, base das regras contabilísticas usadas.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Retained mode</strong> — Modo do DRS 20 que <strong>emulava</strong> o interface do ICL 1500.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>CLI</strong> — <em>Command Line Interface</em>: intérprete/executor de comandos em linha.</li>
+<!-- /wp:list-item --></ul>
+
+<p><!-- /wp:list --></p>
+
+<p><!-- wp:heading --></p>
+
+<h2 class="wp-block-heading">10) Agradecimentos</h2>
+
+<p><!-- /wp:heading --></p>
+
+<p><!-- wp:paragraph --></p>
+
+<p>À equipa de <strong>Feltham</strong> pelo ambiente de trabalho, e uma nota especial ao <strong>Terry Fuller</strong> pelo desafio técnico que, direta ou indiretamente, impulsionou este pequeno projeto.</p>
+
+<p><!-- /wp:paragraph --></p>
+
+<p><!-- wp:heading --></p>
+
+<h2 class="wp-block-heading">11) Fontes e notas históricas</h2>
+
+<p><!-- /wp:heading --></p>
+
+<p><!-- wp:quote --></p>
+
+<blockquote class="wp-block-quote"><!-- wp:paragraph -->
+<p><em>Abaixo ficam fontes públicas e testemunhos técnicos que ajudam a contextualizar o DRS 20, o DRX (Executive) e o arranque em “retained” vs “native” mode. A gramática completa do CLI do Executive não está facilmente disponível online; estes apontadores são um bom ponto de partida para investigação adicional.</em></p>
+<!-- /wp:paragraph --></blockquote>
+
+<p><!-- /wp:quote --></p>
+
+<p><!-- wp:paragraph --></p>
+
+<p><strong>Visão geral da gama DRS e do DRS 20</strong></p>
+
+<p><!-- /wp:paragraph --></p>
+
+<p><!-- wp:list --></p>
+
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li><em>ICL DRS — visão geral</em> (modelos, CPUs 8085/80188/80186, arranjo de nós LAN coax 93 Ω a 1,25 Mbps, unidades com/sem disco e <em>boot</em> partilhado).</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><em>Notas de evolução</em> para a linha DRS (300/6000) — útil para não confundir com plataformas posteriores (DRS/NX Unix, etc.).</li>
+<!-- /wp:list-item --></ul>
+
+<p><!-- /wp:list --></p>
+
+<p><!-- wp:paragraph --></p>
+
+<p><strong>Retained vs Native Mode (emulação ICL 1500)</strong></p>
+
+<p><!-- /wp:paragraph --></p>
+
+<p><!-- wp:list --></p>
+
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li>Documento técnico de síntese da ICL que descreve o <strong>“Retained Mode”</strong> (emulação da ordem de instruções do 1500 em <em>bit-slice</em>) e o <strong>“N‑Mode”</strong> (nativo).</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Testemunhos técnicos coevos (listas/foruns) confirmam a passagem de <strong>retained</strong> para <strong>native (8085AH2)</strong> no DRS 20 e apontam limitações de desempenho do <em>retained</em>.</li>
+<!-- /wp:list-item --></ul>
+
+<p><!-- /wp:list --></p>
+
+<p><!-- wp:paragraph --></p>
+
+<p><strong>Sistemas operativos e ferramentas</strong></p>
+
+<p><!-- /wp:paragraph --></p>
+
+<p><!-- wp:list --></p>
+
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li><strong>DRX — Distributed Resource Executive</strong> como ambiente/“executive” do DRS 20; referências a edições como <strong>DRX 2.1</strong> e à disponibilidade de <strong>CP/M 2.2</strong> e ferramentas de desenvolvimento (Microsoft BASIC, CIS‑COBOL, Pascal, Userbuild, Demon).</li>
+<!-- /wp:list-item --></ul>
+
+<p><!-- /wp:list --></p>
+
+<p><!-- wp:paragraph --></p>
+
+<p><strong>Arquivos e repositórios para aprofundar</strong></p>
+
+<p><!-- /wp:paragraph --></p>
+
+<p><!-- wp:list --></p>
+
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li><strong>Bitsavers</strong> — repositório de manuais ICL (incl. sínteses técnicas e PDFs).</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Science Museum Group Archives</strong> — <em>finding aid</em> do fundo ICL, com séries de manuais e documentação comercial/técnica.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Museus e coleções online</strong> (p.ex. <em>Centre for Computing History</em>) com entradas sobre a gama DRS.</li>
+<!-- /wp:list-item --></ul>
+
+<p><!-- /wp:list --></p>
+
+<p><!-- wp:quote --></p>
+
+<blockquote class="wp-block-quote"><!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph --></blockquote>
+
+<p><!-- /wp:quote --></p>
+
+<p><!-- wp:paragraph --></p>
+
+<p>Artigo [ histórico] de <strong><em><a href="https://fasgoncalves.github.io/fragmentoscaos-html/sobre-francisco-goncalves.html" data-type="page" data-id="328">Francisco Gonçalves</a></em></strong> in Fragmentos do Caos </p>
+
+<p><!-- /wp:paragraph --></p>
+
+<p><!-- wp:paragraph --></p>
+
+<p>[fc_footer]</p>
+
+<p><!-- /wp:paragraph --></p>
+
+<p><!-- wp:quote --></p>
+
+<blockquote class="wp-block-quote"><!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph --></blockquote>
+
+<p><!-- /wp:quote --></p>
+
+<p><!-- wp:separator -->
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+<!-- /wp:separator --></p>
+
+</body>
+</html>
